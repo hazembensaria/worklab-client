@@ -1,13 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { authModel } from '../Models/auth-model';
-import {HttpClient} from "@angular/common/http";
 import { Router } from '@angular/router';
+import { authModel } from '../Models/auth-model';
 import { Subject } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class UserService {
 
   private authListner=new Subject<boolean>();//bch na3rfou bih est ce que fama user mconecti bch ndesplayi 7ajet fel header w fazet
   private token!:string;
@@ -16,27 +15,22 @@ export class AuthServiceService {
     private userId ! : string
 
   constructor(private http:HttpClient ,  private router :Router) { }
+   //------------------------register ------------------------------
 
-
-
-
-  //------------------------register ------------------------------
-
-  createUser(email:string,password:string,name:string){
+   createUser(email:string,password:string,name:string){
     
    
-  const user={email:email,password:password,name:name}
-    console.log(user)
-    this.http.post('http://localhost:4000/user/signUp',user).subscribe(result=>{
-      console.log(result);
-
-
-    })
-  }
-
+    const user={email:email,password:password,name:name}
+      console.log(user)
+      this.http.post('http://localhost:4000/user/signUp',user).subscribe(result=>{
+        console.log(result);
+  
+  
+      })
+    }
   
 
-  //------------------------login---------------------------------
+    //------------------------login---------------------------------
   loginUser(email:string,password:string){
     const auth:authModel={email:email,password:password}
     
@@ -48,25 +42,32 @@ export class AuthServiceService {
             this.userId= result.id
             this.token=result.token;
             this.authListner.next(true);
-            if(result.isNew){
-    
-              this.router.navigate(["/profil"])
-            }
-            else
             this.router.navigate(['home'])
+            
           }
     
         })
       }
+       //------------------------reset password---------------------------------
+
+    resetPassword(email :string) {
+      
+      this.http.post('http://localhost:4000/user/resetPassword',{email}).subscribe(result=>{
+        console.log(result);
+  
+  
+      })
+    } 
 
 
- //---------------------Save Auth Data ------------------------------
- 
- private saveAuthData(token :string  ){
-  localStorage.setItem("token" ,token)
-}
-
-getToken(){}
 
 
+      private saveAuthData(token :string  ){
+        localStorage.setItem("token" ,token)
+      }
+
+      getToken(){
+       const token = localStorage.getItem('token');
+       return token ;
+      }
 }
