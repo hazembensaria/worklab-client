@@ -1,0 +1,6 @@
+.rot{
+   transform:  rotate3d(-1, -1, 0, 30deg)
+}
+.bs{
+    box-shadow: 31px 31px 95px 15px rgba(0,0,0,0.63);
+}

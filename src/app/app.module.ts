@@ -6,7 +6,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { RegisterComponent } from './components/public/register/register.component';
 import { LandingPageComponent } from './components/public/landing-page/landing-page.component';
-
+import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AuthServiceService } from './Services/auth-service.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { ResetPasswordComponent } from './components/public/reset-password/reset-password.component';
+import { HomeComponent } from './components/public/home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +19,21 @@ import { LandingPageComponent } from './components/public/landing-page/landing-p
     LoginComponent,
     RegisterComponent,
     LandingPageComponent,
+    NavBarComponent,
+    ResetPasswordComponent,
+    HomeComponent,
+   
    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+     HttpClientModule
+    
   ],
-  providers: [],
+  providers: [AuthServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userservice : UserService) { }
 
   ngOnInit(): void {
   }
+  async onSubmit (myForm:NgForm){
+    const user={
+      email:myForm.value.email,
+      password:myForm.value.password,
+      name:myForm.value.name
+                }
+                console.log(user);
+                await this.userservice.createUser(myForm.value.email,myForm.value.password,myForm.value.name);
+                 alert("go check your inbox , please check your spam too") ;
 
+                
+
+  }
 }

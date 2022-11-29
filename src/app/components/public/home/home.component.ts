@@ -1,13 +1,12 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ace from "ace-builds";
-
 @Component({
-  selector: 'app-landing-page',
-  templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class LandingPageComponent implements OnInit , AfterViewInit {
-  codeee :any 
+export class HomeComponent implements OnInit {
+
   @ViewChild("editor")
   private editor!: ElementRef<HTMLElement>;
   constructor() { }
@@ -32,7 +31,6 @@ export class LandingPageComponent implements OnInit , AfterViewInit {
     //   console.log(aceEditor.getValue());
     // });
   }
-
   ngOnInit(): void {
   }
   exucte(){
