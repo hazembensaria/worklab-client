@@ -52,12 +52,17 @@ export class UserService {
 
     resetPassword(email :string) {
       
-      this.http.post('http://localhost:4000/user/resetPassword',{email}).subscribe(result=>{
+      this.http.post('http://localhost:4000/user/reset',{email}).subscribe(result=>{
         console.log(result);
-  
-  
       })
     } 
+
+    //-----------------set new password ---------------------------------------
+
+    setNewPassword(password:string,id:string){
+      const userCerdentials={password,id}
+      return this.http.post('http://localhost:4000/user/setNewPass',userCerdentials);
+    }
 
 
 

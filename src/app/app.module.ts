@@ -12,6 +12,7 @@ import { AuthServiceService } from './Services/auth-service.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ResetPasswordComponent } from './components/public/reset-password/reset-password.component';
 import { HomeComponent } from './components/public/home/home.component';
+import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HomeComponent } from './components/public/home/home.component';
     NavBarComponent,
     ResetPasswordComponent,
     HomeComponent,
+    ResetPageComponent,
    
    
   ],

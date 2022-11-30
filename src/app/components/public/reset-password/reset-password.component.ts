@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -8,13 +9,14 @@ import { NgForm } from '@angular/forms';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
   }
   onSubmit(myForm:NgForm){
     const user={email:myForm.value.email}
-    console.log(user);
+    this.userService.resetPassword(user.email);
+    alert("check your mail !")
     
    
     
