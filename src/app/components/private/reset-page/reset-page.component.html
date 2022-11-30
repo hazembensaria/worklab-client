@@ -1,0 +1,12 @@
+<div class="father w-full flex justify-center items-center h-[90vh] ">
+    <form  (submit)="onSubmit(myForm)" #myForm="ngForm" class="flex flex-col rounded-md p-8 shadow-lg justify-center gap-4 w-[30%] m-auto bg-gray-50">
+
+        <input class="p-2 rounded-xl border" type="password" placeholder="enter your new password" name="password" ngModel required #password="ngModel" password>
+
+       
+        <button   class=" login  bg-blue-900 rounded-xl text-white py-2">Set your new  password</button>
+        
+
+    </form>
+
+</div>

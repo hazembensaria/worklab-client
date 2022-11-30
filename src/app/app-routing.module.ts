@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { LandingPageComponent } from './components/public/landing-page/landing-page.component';
 import { LoginComponent } from './components/public/login/login.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   },
   {
     path:"reset",component:ResetPasswordComponent
+
+  },
+  {
+    path:"user/reset/:id",component:ResetPageComponent
 
   },
   {

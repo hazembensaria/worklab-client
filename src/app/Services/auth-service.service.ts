@@ -68,5 +68,14 @@ export class AuthServiceService {
 
 getToken(){}
 
+resetPass(email:string){
+  this.http.post("http://localhost:4000/user/signUp",{email})
+}
+
 
 }
+
+//--------------------Reset Password-----------------
+
+
+
