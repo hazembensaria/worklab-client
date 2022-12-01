@@ -9,6 +9,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
+  showPassword=false
+
   constructor(private userservice : UserService) { }
 
   ngOnInit(): void {
@@ -24,6 +26,11 @@ export class RegisterComponent implements OnInit {
                  alert("go check your inbox , please check your spam too") ;
 
                 
+
+  }
+  showPass(){
+
+    this.showPassword=!this.showPassword;
 
   }
 }
