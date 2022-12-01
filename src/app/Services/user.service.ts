@@ -69,6 +69,7 @@ export class UserService {
 
       private saveAuthData(token :string  ){
         localStorage.setItem("token" ,token)
+        
       }
 
       getToken(){
