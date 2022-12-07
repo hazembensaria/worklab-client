@@ -14,6 +14,7 @@ import { ResetPasswordComponent } from './components/public/reset-password/reset
 import { HomeComponent } from './components/public/home/home.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 import { IdeComponent } from './components/public/ide/ide.component';
+import {MatButtonModule} from '@angular/material/button'; 
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { IdeComponent } from './components/public/ide/ide.component';
     FormsModule, 
     ReactiveFormsModule,
      HttpClientModule,
+     MatButtonModule
    
     
   ],
