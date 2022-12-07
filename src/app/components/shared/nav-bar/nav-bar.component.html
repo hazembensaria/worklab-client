@@ -1,21 +1,29 @@
 <div class="father w-full h-[10vh] bg-[#01192f] flex text-white items-center justify-around ">
     <div class="logo hover:cursor-pointer" routerLink="/">
-        our logo
+       <!-- <img class=" w-[60px] h-[60px] " src="../../../../assets/images/worklab-logo.png" alt=""> -->
+     <div class=" font-semibold text-3xl text-[#be8a28] ">  <\ WorkLab ></div>
     </div>
 
-    <ul class=" flex gap-4" >
-        <li class=" hover:cursor-pointer " routerLink="/login">
+    <ul class=" flex justify-center items-center gap-8" >
+        <li *ngIf="!isConnected" class=" hover:cursor-pointer " routerLink="/login">
             login
         </li>
-        <li class=" hover:cursor-pointer " routerLink="/register">
+        <li *ngIf="!isConnected" class=" hover:cursor-pointer " routerLink="/register">
             register
         </li>
-        <li>
-            learn more
+        <li *ngIf="isConnected" class=" hover:cursor-pointer " routerLink="/home">
+            home
         </li>
+        <li *ngIf="isConnected" class=" hover:cursor-pointer " routerLink="/">
+            join Worklab
+        </li>
+        <li *ngIf="isConnected" class=" bg-green-600 p-2 rounded-md flex justify-center items-center hover:cursor-pointer " routerLink="/login">
+            make Worklab
+        </li>
+       
     </ul>
 
     <div>
-        get premiem
+        profile
     </div>
 </div>

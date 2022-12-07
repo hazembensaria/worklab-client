@@ -13,6 +13,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ResetPasswordComponent } from './components/public/reset-password/reset-password.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
+import { IdeComponent } from './components/public/ide/ide.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ResetPageComponent } from './components/private/reset-page/reset-page.c
     ResetPasswordComponent,
     HomeComponent,
     ResetPageComponent,
+    IdeComponent,
    
    
   ],
@@ -32,7 +35,8 @@ import { ResetPageComponent } from './components/private/reset-page/reset-page.c
     AppRoutingModule,
     FormsModule, 
     ReactiveFormsModule,
-     HttpClientModule
+     HttpClientModule,
+   
     
   ],
   providers: [AuthServiceService],

@@ -1,8 +1,13 @@
-<div
-    class="app-ace-editor"
-    #editor
-    class="w-full h-[300px] " ></div>
-  <button (click)="exucte()" >
-    run code
-  </button>
+<div class="father flex  justify-between pr-2 bg-gray-900 ">
+  <div class=" w-[60%] ">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="min-h-[90vh] w-[39%] bg-gray-300 rounded-md ">
+    <div class=" w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
+      <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">chat</div>
+      <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">memebres</div>
+      <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">problem</div>
+    </div>
+  </div>
+</div>
 

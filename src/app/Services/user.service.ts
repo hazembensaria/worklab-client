@@ -8,9 +8,9 @@ import { Subject } from 'rxjs';
 })
 export class UserService {
 
-  private authListner=new Subject<boolean>();//bch na3rfou bih est ce que fama user mconecti bch ndesplayi 7ajet fel header w fazet
+   authListner=new Subject<boolean>();//bch na3rfou bih est ce que fama user mconecti bch ndesplayi 7ajet fel header w fazet
   private token!:string;
-  private islogednow =false ;
+   islogednow =false ;
   private user : any
     private userId ! : string
 
@@ -35,8 +35,12 @@ export class UserService {
     const auth:authModel={email:email,password:password}
     
         this.http.post<{token:string, id:string , name:string,isNew:boolean}>('http://localhost:4000/user/login',auth).subscribe(result=>{
+          console.log(result);
+          
           if(result.token){
-          this.user = result ;
+            console.log("token is here");
+            
+            this.user = result ;
             this.saveAuthData(result.token )
             this.islogednow =true ;
             this.userId= result.id
@@ -56,6 +60,24 @@ export class UserService {
         console.log(result);
       })
     } 
+
+
+    // --------------------auto login---------------------------------------------
+    private getAuthToken(){
+      const token = localStorage.getItem("token")
+      return token
+    }
+    autoAuthUser(){
+      const authInformation = this.getAuthToken()
+  
+      if(authInformation){
+          // this.userToken = authInformation
+        const now  = new Date()
+        this.islogednow =true
+        this.authListner.next(true);
+        // this.getUser()
+      }
+    }
 
     //-----------------set new password ---------------------------------------
 
