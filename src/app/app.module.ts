@@ -8,14 +8,14 @@ import { RegisterComponent } from './components/public/register/register.compone
 import { LandingPageComponent } from './components/public/landing-page/landing-page.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { AuthServiceService } from './Services/auth-service.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ResetPasswordComponent } from './components/public/reset-password/reset-password.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 import { IdeComponent } from './components/public/ide/ide.component';
-import {MatButtonModule} from '@angular/material/button'; 
-
+import {MatButtonModule} from '@angular/material/button';
+import { ProblemsComponent } from './components/private/problems/problems.component'; 
+import {MatSelectModule} from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
@@ -28,6 +28,8 @@ import {MatButtonModule} from '@angular/material/button';
     HomeComponent,
     ResetPageComponent,
     IdeComponent,
+    ProblemsComponent,
+    
    
    
   ],
@@ -37,11 +39,12 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule, 
     ReactiveFormsModule,
      HttpClientModule,
-     MatButtonModule
+     MatButtonModule,
+     MatSelectModule
    
     
   ],
-  providers: [AuthServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

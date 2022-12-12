@@ -18,8 +18,6 @@ export class ResetPasswordComponent implements OnInit {
     this.userService.resetPassword(user.email);
     alert("check your mail !")
     
-   
-    
 
   }
 }
