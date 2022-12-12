@@ -1,0 +1,93 @@
+<div class="container pt-10 pb-5 flex items-center justify-center" >
+    <div class="problems w-2/4 gap-3 flex   flex-col ">
+        <div class="desc flex justify-between pl-4 pr-5 ">
+            <h3>Problem</h3><h3 > Difficulty     <button *ngIf="isAdmin" (click)="showAddProblemPopUp()" class="text-green-700 shadow-lg ml-2 hover:bg-green-800 hover:text-white pr-1 pl-1 rounded-lg">+</button></h3>
+        </div>
+        <hr class="font-medium">
+        <div class="problem" *ngFor="let problem of Problems ; let i=index">
+
+            <div (click)="showPopUp(problem,i)" *ngIf=!(i%2)  class="p-5 flex justify-between hover:cursor-pointer shadow-sm rounded-md" ><div> {{i+1+". "+problem}}</div> <div class="difficulty">hard</div></div>
+            <div (click)="showPopUp(problem,i)" *ngIf=i%2 class="bg-gray-100 p-5  justify-between flex hover:cursor-pointer shadow-sm rounded-md" ><div> {{i+1+". "+problem}}</div> <div class="difficulty">hard</div></div>
+
+            
+            
+
+        </div>
+
+       
+    </div>
+    
+</div>
+
+<div *ngIf="popup&&!addProblemPopUp" class="pop absolute  top-1/3 right-1/3 w-2/5 h-2/5 p-5 shadow-md bg-gray-100 flex flex-col">
+
+    <button class="absolute top-1 right-1 hover:bg-green-700 p-1 rounded-lg hover:text-white"  (click)="popup=false">X</button>
+
+    <div class="container relative  h-full ">
+
+
+        <h1>{{problemName}}</h1>
+         <p>
+             Lorem ipsum dolor sit amet consectetur, 
+             adipisicing elit. Totam ipsum culpa nobis excepturi soluta! Adipisci explicab
+             o optio eos inventore ab ratione soluta eum, quidem pariatur quia ad, possimus autem? Cumque.
+         </p>
+         <div class=" flex justify-between  absolute bottom-3 w-full ">
+             <button class="addToRoom shadow-lg p-3 rounded-md hover:scale-105">
+                 Create new Room
+             </button>
+             <button class="solveProblem shadow-lg p-3 rounded-md hover:scale-105">
+                 solve It
+             </button>
+         </div>
+
+    </div>
+
+
+</div>
+
+<div *ngIf="addProblemPopUp" class="pop absolute  top-1/3 right-1/3 w-2/5 h-2/5 p-5 shadow-lg rounded-md bg-gray-100 flex flex-col">
+
+    <button class="absolute top-1 right-1 hover:bg-green-700 p-1 hover:text-white rounded-lg" (click)="addProblemPopUp=false">X</button>
+
+    <div class="container relative  h-full flex justify-center items-center ">
+
+
+       <form action="" method="post"  (submit)="onAddProblem(myForm)" #myForm="ngForm" class="flex flex-col gap-2 w-2/3 ">
+
+        <input type="text" class="p-2" placeholder="Problem Name" name="problemName" ngModel #problemName="ngModel">
+
+        <textarea name="problemDescription" class="p-2" placeholder="Description" id="" cols="30" rows="2" ngModel #problemDescription="ngModel"></textarea>
+
+            <select #difficulty (change)="onChangeDifficulty()" class="p-2 hover:cursor-pointer" >
+                <option value="Eassy" default >Eassy</option>
+                <option value="Meduim">Meduim</option>
+                <option value="Hard">Hard</option>
+            </select>
+
+            
+
+        <button type="submit" class="mt-3 shadow-xl rounded-xl bg-green-800 p-2 text-white">Add New Problem</button>
+
+       </form>
+
+    </div>
+
+
+</div>
+
+<!-------------------------------------verify that the admin add the problem ------------------------->
+<div *ngIf="verifyPassword&&!popup&&!addProblemPopUp" class="father w-full flex justify-center items-center h-[90vh] absolute top-0 ">
+    <form  (submit)="onSubmitPassword(myForm)" #myForm="ngForm" class="flex flex-col rounded-md p-8 shadow-lg justify-center gap-4 w-[30%] m-auto bg-gray-50">
+
+        <input class="p-2 rounded-xl border" type="password" placeholder="enter your password to proporly add the new problem" name="password" ngModel required #password="ngModel" password>
+
+       
+        <button   class=" login  bg-green-800 text-white rounded-xl text-white py-2">Submit</button>
+        
+
+    </form>
+
+</div>
+
+
