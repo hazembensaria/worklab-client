@@ -15,7 +15,15 @@ import { HomeComponent } from './components/public/home/home.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 import { IdeComponent } from './components/public/ide/ide.component';
 import {MatButtonModule} from '@angular/material/button'; 
-
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
+import { CreateWorklabComponent } from './components/public/dialog/create-worklab/create-worklab.component';
+// import {ButtonModule} from 'primeng/button';
+import {MatInputModule} from '@angular/material/input';
+import { authInteractor } from './Intercetors/authInterceptor';
+import { JoinWorklabComponent } from './components/public/dialog/join-worklab/join-worklab.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,6 +36,8 @@ import {MatButtonModule} from '@angular/material/button';
     HomeComponent,
     ResetPageComponent,
     IdeComponent,
+    CreateWorklabComponent,
+    JoinWorklabComponent,
    
    
   ],
@@ -37,11 +47,18 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule, 
     ReactiveFormsModule,
      HttpClientModule,
-     MatButtonModule
+     MatButtonModule,
+     MatMenuModule,
+     MatDialogModule,
+     MatBadgeModule,
+     MatInputModule,
+     FontAwesomeModule
+  
+     
    
     
   ],
-  providers: [AuthServiceService],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:authInteractor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

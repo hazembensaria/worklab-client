@@ -14,11 +14,11 @@
         <li *ngIf="isConnected" class=" hover:cursor-pointer " routerLink="/home">
             home
         </li>
-        <li *ngIf="isConnected" class=" hover:cursor-pointer " routerLink="/">
-            join Worklab !
+        <li (click)="joinWorklab()" *ngIf="isConnected" class=" hover:cursor-pointer " >
+            join Worklab
         </li>
-        <li *ngIf="isConnected" class=" bg-green-600 p-2 rounded-md flex justify-center items-center hover:cursor-pointer " routerLink="/login">
-            make Worklab !
+        <li *ngIf="isConnected" class=" bg-green-600 p-2 rounded-md flex justify-center items-center hover:cursor-pointer " (click)="hide()">
+            make Worklab 
         </li>
        
     </ul>
@@ -27,3 +27,5 @@
         profile
     </div>
 </div>
+<app-create-worklab *ngIf="show"></app-create-worklab>
+<app-join-worklab *ngIf="showJoinWorklab" ></app-join-worklab>

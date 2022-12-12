@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import * as ace from "ace-builds";
 import { CompilerService } from 'src/app/Services/compiler.service';
+import { CreateWorklabComponent } from '../dialog/create-worklab/create-worklab.component';
 @Component({
   selector: 'app-ide',
   templateUrl: './ide.component.html',
@@ -8,7 +10,7 @@ import { CompilerService } from 'src/app/Services/compiler.service';
 })
 export class IdeComponent implements OnInit {
 
-  constructor(private compilerService : CompilerService) { }
+  constructor(private compilerService : CompilerService ,public dialog: MatDialog) { }
   code! :string
   compiledCode :any
   @ViewChild("editor") private editor!: ElementRef<HTMLElement>;
@@ -44,5 +46,11 @@ export class IdeComponent implements OnInit {
       
     })
     
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(CreateWorklabComponent);
+
+ 
   }
 }

@@ -18,7 +18,7 @@ const routes: Routes = [
 
   },
   {
-    path:"home",component:HomeComponent , children:[
+    path:"worklab/:id",component:HomeComponent , children:[
       {
         path : "" , component : IdeComponent
       }

@@ -85,7 +85,13 @@ export class UserService {
       const userCerdentials={password,id}
       return this.http.post('http://localhost:4000/user/setNewPass',userCerdentials);
     }
+    // ------------------- get the current user -------------------------------------------------
 
+    getCurrentUser(){
+
+      return this.http.get<{_id : string , name : string}>('http://localhost:4000/user')
+  
+    }
 
 
 
