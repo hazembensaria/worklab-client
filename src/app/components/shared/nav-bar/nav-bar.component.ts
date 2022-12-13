@@ -56,10 +56,17 @@ export class NavBarComponent implements OnInit {
       
       
   }
+
+
+  logOut(){
+    this.userService.logOut();
+    
+  }
 hide(){
   this.show = !this.show
 }
 joinWorklab(){
   this.showJoinWorklab = !this.showJoinWorklab ; 
 }
+
 }
