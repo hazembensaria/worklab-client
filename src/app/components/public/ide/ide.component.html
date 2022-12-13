@@ -2,11 +2,9 @@
     <div class=" w-full flex flex-col gap-[.44rem]  ">
         <div class=" w-full  h-[6vh] flex items-center px-4 ">
             <div class=" px-2 flec justify-center items-center h-[70%] bg-gray-300 rounded-md  ">javascript</div>
-             <button mat-button color="primary">Primary</button>
-            <button mat-button color="accent">Accent</button>
-            <button mat-button (click)="openDialog()">Open dialog</button>
+             
         </div>
-        <div   class="app-ace-editor rounded-md w-full h-[47vh] "  #editor >
+        <div (input)="change()"  class="app-ace-editor rounded-md w-full h-[47vh] "  #editor >
             <!-- nothing -->
 
 

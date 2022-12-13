@@ -19,11 +19,21 @@ export class IdeComponent implements OnInit {
   ngOnInit(): void {
     // const aceEditorr = ace.edit(this.editor.nativeElement);
     this.worklabService.socket?.on('getCode', (obj :any)=>{
-      // const   
-      // aceEditorr.session.setValue(obj.msg);
+      const aceEditor = ace.edit(this.editor.nativeElement);
+      aceEditor.session.setValue(obj.msg);
       console.log(obj.msg);
       
       })
+
+      this.worklabService.socket?.on('getExecuter', (obj :any)=>{
+        const aceEditor = ace.edit(this.editor.nativeElement);  
+        console.log(aceEditor.getValue());
+        this.compilerService.compileCode(aceEditor.getValue()).subscribe(res=>{
+          console.log(res);
+          this.compiledCode = res
+          
+        })
+        })
   }
   ngAfterViewInit(): void {
     ace.config.set("fontSize", "14px");
@@ -42,13 +52,14 @@ export class IdeComponent implements OnInit {
       enableBasicAutocompletion : true,
       enableLiveAutocompletion :true ,
     })
-    aceEditor.on("change", () => {
-    this.worklabService.socket.emit("code" , {code : aceEditor.getValue() , auther : this.worklabService.auther})
+    // aceEditor.on("change", () => {
+    // this.worklabService.socket.emit("code" , {code : aceEditor.getValue() , auther : this.worklabService.auther})
 
-      // console.log(aceEditor.getValue());
-    });
+    //   console.log(aceEditor.getValue());
+    // });
   }
   execute(){
+    this.worklabService.socket.emit("executer" , {auther : this.worklabService.auther})
     const aceEditor = ace.edit(this.editor.nativeElement);  
     console.log(aceEditor.getValue());
     this.compilerService.compileCode(aceEditor.getValue()).subscribe(res=>{
@@ -63,5 +74,12 @@ export class IdeComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateWorklabComponent);
 
  
+  }
+  change(){
+    
+    const aceEditor = ace.edit(this.editor.nativeElement);  
+    console.log(aceEditor.getValue());
+    this.worklabService.socket.emit("code" , {code : aceEditor.getValue() , auther : this.worklabService.auther})
+
   }
 }

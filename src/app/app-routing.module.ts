@@ -6,6 +6,7 @@ import { HomeComponent } from './components/public/home/home.component';
 import { IdeComponent } from './components/public/ide/ide.component';
 import { LandingPageComponent } from './components/public/landing-page/landing-page.component';
 import { LoginComponent } from './components/public/login/login.component';
+import { MembersComponent } from './components/public/members/members.component';
 import { RegisterComponent } from './components/public/register/register.component';
 import { ResetPasswordComponent } from './components/public/reset-password/reset-password.component';
 
@@ -21,7 +22,10 @@ const routes: Routes = [
   {
     path:"worklab/:id",component:HomeComponent , children:[
       {
-        path : "" , component : IdeComponent
+        path : "" , component : IdeComponent , outlet : 'child1'
+      },
+      {
+        path : "members" , component : MembersComponent ,outlet : 'child2'
       }
     ]
 

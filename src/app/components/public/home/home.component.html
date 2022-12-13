@@ -15,21 +15,21 @@
 
 <div class="father flex  justify-between pr-2 bg-gray-900 ">
   <div class=" w-[60%] ">
-    <router-outlet></router-outlet>
+    <router-outlet name='child1'></router-outlet>
   </div>
   <div class="min-h-[90vh] w-[39%] bg-gray-600 rounded-md ">
     <div class="titles w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
-      <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">chat</div>
-      <div class=" bg-gray-300 py-1 px-2 rounded-t-md " [matBadge]="worklab.participants.length" matBadgeColor="warn">memebres</div>
-      <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">problem</div>
+      <div class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">chat</div>
+      <div  class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   " [matBadge]="worklab.participants.length" matBadgeColor="warn">memebres</div>
+      <div class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">problem</div>
     </div>
-    <div class="  ">
-      <fa-icon [icon]="faCoffee"></fa-icon>
-      <i class="fa-solid fa-circle-xmark"></i>d
-        <p>the worklab auther : {{currentUser?.name}}</p>
-        <p>the worklab name : {{worklab?.name}}</p>
-        <p>the worklab id : {{worklab?._id}}</p>
+    <div class="flex gap-4 p-2 text-white ">
+        <p> auther : {{currentUser?.name}}</p>
+        <p> name : {{worklab?.name}}</p>
+        <p> id : {{worklab?._id}}</p>
+       
     </div>
+    <router-outlet name='child2'></router-outlet>
   </div>
 </div>
 
