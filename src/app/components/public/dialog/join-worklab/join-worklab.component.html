@@ -1,0 +1,14 @@
+
+
+
+<div class=" flex flex-col items-center justify-center  w-[30%] top-[35%] left-[35%] rounded-md shadow-lg bg-slate-100 h-[15rem] fixed z-50 ">
+    <form *ngIf="!loading" (submit)="onSubmit()" class="example-form w-[80%] flex flex-col gap-8 items-center">
+        <mat-form-field class="example-full-width w-full" >
+          <mat-label>Your Worklab id</mat-label>
+          <input [(ngModel)]="workLabId" matInput placeholder="enter worklab id" name="worklab" autocomplete="false">
+        </mat-form-field>
+        <button type="submit" class=" bg-[#01192f] text-white rounded-md px-4 py-1 " >join</button>
+      </form> 
+      <h1 *ngIf="loading">  Waiting for the host to accept ...</h1> 
+      <div *ngIf="loading" class="lds-dual-ring"></div>  
+</div>
