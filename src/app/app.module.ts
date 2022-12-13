@@ -13,6 +13,17 @@ import { ResetPasswordComponent } from './components/public/reset-password/reset
 import { HomeComponent } from './components/public/home/home.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 import { IdeComponent } from './components/public/ide/ide.component';
+
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
+import { CreateWorklabComponent } from './components/public/dialog/create-worklab/create-worklab.component';
+// import {ButtonModule} from 'primeng/button';
+import {MatInputModule} from '@angular/material/input';
+import { authInteractor } from './Intercetors/authInterceptor';
+import { JoinWorklabComponent } from './components/public/dialog/join-worklab/join-worklab.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {MatButtonModule} from '@angular/material/button';
 import { ProblemsComponent } from './components/private/problems/problems.component'; 
 import {MatSelectModule} from '@angular/material/select'; 
@@ -28,6 +39,10 @@ import {MatSelectModule} from '@angular/material/select';
     HomeComponent,
     ResetPageComponent,
     IdeComponent,
+
+    CreateWorklabComponent,
+    JoinWorklabComponent,
+
     ProblemsComponent,
     
    
@@ -40,11 +55,20 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
      HttpClientModule,
      MatButtonModule,
+
+     MatMenuModule,
+     MatDialogModule,
+     MatBadgeModule,
+     MatInputModule,
+     FontAwesomeModule,
      MatSelectModule
+  ],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:authInteractor,multi:true}],
+
    
     
   ],
-  providers: [],
+ 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

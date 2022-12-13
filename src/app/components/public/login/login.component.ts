@@ -26,9 +26,6 @@ export class LoginComponent implements OnInit {
 
   ShowPass(){
     this.showPassword = !this.showPassword
-      
-      
-      
   }
 
   ngOnInit(): void {

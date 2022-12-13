@@ -1,12 +1,34 @@
+
+<div *ngIf="invitations.length" class=" flex items-end gap-2 p-2 absolute right-0 z-50  flex-col w-[25%] px-4 ">
+  <div *ngFor="let invitation of invitations" class=" bg-[#47f68d] rounded-md shadow-lg p-2 ">
+    <div class=" flex w-full items-center justify-between   ">
+      <p>{{invitation?.participantName}}</p>
+      <fa-icon [icon]="fax"></fa-icon>
+    </div>
+    <div class=" w-full flex justify-center gap-8 items-center ">
+      <button (click)="acceptUser(invitation.participantName ,invitation.participantId )" class=" bg-white rounded-md px-8 ">accept</button>
+    <button class=" bg-red-200 text-red-500 rounded-md px-8 ">refuse</button>
+    </div>
+    <!-- <p>{{invitation.participantId}}</p> -->
+  </div>
+</div>
+
 <div class="father flex  justify-between pr-2 bg-gray-900 ">
   <div class=" w-[60%] ">
     <router-outlet></router-outlet>
   </div>
-  <div class="min-h-[90vh] w-[39%] bg-gray-300 rounded-md ">
-    <div class=" w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
+  <div class="min-h-[90vh] w-[39%] bg-gray-600 rounded-md ">
+    <div class="titles w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
       <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">chat</div>
-      <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">memebres</div>
+      <div class=" bg-gray-300 py-1 px-2 rounded-t-md " [matBadge]="worklab.participants.length" matBadgeColor="warn">memebres</div>
       <div class=" bg-gray-300 py-1 px-2 rounded-t-md ">problem</div>
+    </div>
+    <div class="  ">
+      <fa-icon [icon]="faCoffee"></fa-icon>
+      <i class="fa-solid fa-circle-xmark"></i>d
+        <p>the worklab auther : {{currentUser?.name}}</p>
+        <p>the worklab name : {{worklab?.name}}</p>
+        <p>the worklab id : {{worklab?._id}}</p>
     </div>
   </div>
 </div>
