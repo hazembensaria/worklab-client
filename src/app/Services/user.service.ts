@@ -100,4 +100,8 @@ export class UserService {
        const token = localStorage.getItem('token');
        return token ;
       }
+       logOut(){
+        localStorage.removeItem("token")
+        localStorage.removeItem("email")
+      }
 }
