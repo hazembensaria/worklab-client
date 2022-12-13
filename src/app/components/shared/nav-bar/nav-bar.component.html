@@ -20,6 +20,9 @@
         <li *ngIf="isConnected" class=" bg-green-600 p-2 rounded-md flex justify-center items-center hover:cursor-pointer " (click)="hide()">
             make Worklab 
         </li>
+        <li *ngIf="isConnected" (click)="logOut()" class=" hover:cursor-pointer hover:to-red-300 hover:shadow-lg " routerLink="/">
+            LogOut
+        </li>
        
     </ul>
 
