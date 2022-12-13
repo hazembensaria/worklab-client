@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import * as ace from "ace-builds";
 import { CompilerService } from 'src/app/Services/compiler.service';
+import { WorklabService } from 'src/app/Services/workLab.service';
 import { CreateWorklabComponent } from '../dialog/create-worklab/create-worklab.component';
 @Component({
   selector: 'app-ide',
@@ -10,11 +11,19 @@ import { CreateWorklabComponent } from '../dialog/create-worklab/create-worklab.
 })
 export class IdeComponent implements OnInit {
 
-  constructor(private compilerService : CompilerService ,public dialog: MatDialog) { }
+  constructor(private compilerService : CompilerService ,public dialog: MatDialog , private worklabService : WorklabService) { }
   code! :string
   compiledCode :any
   @ViewChild("editor") private editor!: ElementRef<HTMLElement>;
+  
   ngOnInit(): void {
+    // const aceEditorr = ace.edit(this.editor.nativeElement);
+    this.worklabService.socket?.on('getCode', (obj :any)=>{
+      // const   
+      // aceEditorr.session.setValue(obj.msg);
+      console.log(obj.msg);
+      
+      })
   }
   ngAfterViewInit(): void {
     ace.config.set("fontSize", "14px");
@@ -33,9 +42,11 @@ export class IdeComponent implements OnInit {
       enableBasicAutocompletion : true,
       enableLiveAutocompletion :true ,
     })
-    // aceEditor.on("change", () => {
-    //   console.log(aceEditor.getValue());
-    // });
+    aceEditor.on("change", () => {
+    this.worklabService.socket.emit("code" , {code : aceEditor.getValue() , auther : this.worklabService.auther})
+
+      // console.log(aceEditor.getValue());
+    });
   }
   execute(){
     const aceEditor = ace.edit(this.editor.nativeElement);  

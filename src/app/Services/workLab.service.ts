@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class WorklabService {
 openDialog  = new Subject<boolean>()
+auther !: string ;
 socket :any ; 
   constructor(private http:HttpClient ,  private router :Router) { }
 

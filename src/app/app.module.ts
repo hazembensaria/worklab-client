@@ -8,13 +8,11 @@ import { RegisterComponent } from './components/public/register/register.compone
 import { LandingPageComponent } from './components/public/landing-page/landing-page.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { AuthServiceService } from './Services/auth-service.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ResetPasswordComponent } from './components/public/reset-password/reset-password.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 import { IdeComponent } from './components/public/ide/ide.component';
-import {MatButtonModule} from '@angular/material/button'; 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -24,6 +22,9 @@ import {MatInputModule} from '@angular/material/input';
 import { authInteractor } from './Intercetors/authInterceptor';
 import { JoinWorklabComponent } from './components/public/dialog/join-worklab/join-worklab.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatButtonModule} from '@angular/material/button';
+import { ProblemsComponent } from './components/private/problems/problems.component'; 
+import {MatSelectModule} from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     IdeComponent,
     CreateWorklabComponent,
     JoinWorklabComponent,
+    ProblemsComponent,
+    
    
    
   ],
@@ -52,11 +55,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
      MatDialogModule,
      MatBadgeModule,
      MatInputModule,
-     FontAwesomeModule
-  
-     
-   
-    
+     FontAwesomeModule,
+     MatSelectModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:authInteractor,multi:true}],
   bootstrap: [AppComponent]

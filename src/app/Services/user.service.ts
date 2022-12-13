@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 })
 export class UserService {
 
+  loggedInUserEmail:String="x";
    authListner=new Subject<boolean>();//bch na3rfou bih est ce que fama user mconecti bch ndesplayi 7ajet fel header w fazet
   private token!:string;
    islogednow =false ;
@@ -43,8 +44,9 @@ export class UserService {
             this.user = result ;
             this.saveAuthData(result.token )
             this.islogednow =true ;
-            this.userId= result.id
+            this.userId= result.id;
             this.token=result.token;
+            localStorage.setItem("email",email);
             this.authListner.next(true);
             this.router.navigate(['home'])
             

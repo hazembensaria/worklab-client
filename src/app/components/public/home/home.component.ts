@@ -30,6 +30,7 @@ workLabId! : string ;
       this.workLabService.getWorklab({id : this.workLabId}).subscribe(worklab=>{
         console.log(worklab);
         this.worklab  = worklab ; 
+        this.workLabService.auther = this.worklab.auther ;
       })
     })
     this.userService.getCurrentUser().subscribe(res=>{
