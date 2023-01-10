@@ -44,7 +44,7 @@ export class LandingPageComponent implements OnInit , AfterViewInit {
     
 
      }catch(err){
-      console.log(err);
+      
       
      }
    }

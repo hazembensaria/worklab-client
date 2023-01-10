@@ -5,22 +5,27 @@
     </div>
 
     <ul class=" flex justify-center items-center gap-8" >
-        <li *ngIf="!isConnected" class=" hover:cursor-pointer " routerLink="/login">
-            login
+        <li *ngIf="!isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " routerLink="/login">
+        login
         </li>
-        <li *ngIf="!isConnected" class=" hover:cursor-pointer " routerLink="/register">
+        <li *ngIf="!isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " routerLink="/register">
             register
         </li>
-        <li *ngIf="isConnected" class=" hover:cursor-pointer " routerLink="/home">
+        <li *ngIf="isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "  routerLink="/home">
             home
         </li>
-        <li (click)="joinWorklab()" *ngIf="isConnected" class=" hover:cursor-pointer " >
+        <li (click)="joinWorklab()" *ngIf="isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " >
             join Worklab
         </li>
-        <li *ngIf="isConnected" class=" bg-green-600 p-2 rounded-md flex justify-center items-center hover:cursor-pointer " (click)="hide()">
+        <li *ngIf="isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " (click)="hide()">
             make Worklab 
         </li>
-        <li *ngIf="isConnected" (click)="logOut()" class=" hover:cursor-pointer hover:to-red-300 hover:shadow-lg ">
+        
+        <li  class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "  routerLink="/problems">
+            Problems
+        </li>  
+        
+        <li *ngIf="isConnected" (click)="logOut()" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "  routerLink="/">
             LogOut
         </li>
        

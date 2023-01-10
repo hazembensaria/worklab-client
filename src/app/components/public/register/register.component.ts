@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
       password:myForm.value.password,
       name:myForm.value.name
                 }
-                console.log(user);
+                
                 await this.userservice.createUser(myForm.value.email,myForm.value.password,myForm.value.name);
                  alert("go check your inbox , please check your spam too") ;
 

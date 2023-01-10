@@ -6,8 +6,8 @@
         <hr class="font-medium">
         <div class="problem" *ngFor="let problem of Problems ; let i=index">
 
-            <div (click)="showPopUp(problem,i)" *ngIf=!(i%2)  class="p-5 flex justify-between hover:cursor-pointer shadow-sm rounded-md" ><div> {{i+1+". "+problem}}</div> <div class="difficulty">hard</div></div>
-            <div (click)="showPopUp(problem,i)" *ngIf=i%2 class="bg-gray-100 p-5  justify-between flex hover:cursor-pointer shadow-sm rounded-md" ><div> {{i+1+". "+problem}}</div> <div class="difficulty">hard</div></div>
+            <div (click)="showPopUp(problem,problem._id)" *ngIf=!(i%2)  class="p-5 flex justify-between hover:cursor-pointer shadow-sm rounded-md" ><div> {{i+1+". "+problem.name}}</div> <div class="difficulty">hard</div></div>
+            <div (click)="showPopUp(problem,problem._id)" *ngIf=i%2 class="bg-gray-100 p-5  justify-between flex hover:cursor-pointer shadow-sm rounded-md" ><div> {{i+1+". "+problem.name}}</div> <div class="difficulty">hard</div></div>
 
             
             
@@ -28,9 +28,7 @@
 
         <h1>{{problemName}}</h1>
          <p>
-             Lorem ipsum dolor sit amet consectetur, 
-             adipisicing elit. Totam ipsum culpa nobis excepturi soluta! Adipisci explicab
-             o optio eos inventore ab ratione soluta eum, quidem pariatur quia ad, possimus autem? Cumque.
+             {{problemDescription}}
          </p>
          <div class=" flex justify-between  absolute bottom-3 w-full ">
              <button class="addToRoom shadow-lg p-3 rounded-md hover:scale-105">
