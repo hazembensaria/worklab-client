@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProblemsComponent } from './components/private/problems/problems.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
+import { ChatComponent } from './components/public/chat/chat.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { IdeComponent } from './components/public/ide/ide.component';
 import { LandingPageComponent } from './components/public/landing-page/landing-page.component';
@@ -22,10 +23,10 @@ const routes: Routes = [
   {
     path:"worklab/:id",component:HomeComponent , children:[
       {
-        path : "" , component : IdeComponent , outlet : 'child1'
+        path : "members" , component : MembersComponent 
       },
       {
-        path : "members" , component : MembersComponent ,outlet : 'child2'
+        path : "" , component : ChatComponent
       }
     ]
 

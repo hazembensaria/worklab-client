@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
 })
 export class WorklabService {
 openDialog  = new Subject<boolean>()
-auther !: string ;
 socket :any ; 
+acceptEvent  = new Subject<boolean>()
   constructor(private http:HttpClient ,  private router :Router) { }
 
   createWorklab(name : string){
@@ -23,10 +23,25 @@ socket :any ;
 
   getWorklab(worklab : {id : string}){
 
-    return this.http.post('http://localhost:4000/worklab/getWorklab' , worklab)
+    return this.http.post<{sharedCode : boolean , _id : string ,  chat : [] , auther :string , participants :[]}>('http://localhost:4000/worklab/getWorklab' , worklab)
 
   }
   addParticipant(participant : {name :string , id : string , worklabId :string}){
     return this.http.post('http://localhost:4000/worklab/addParticipant' , participant)
+  }
+  addMessage(message : string ,name  :string, id :string){
+    const obj ={
+      message,
+      name,
+      id
+    }
+    return this.http.post('http://localhost:4000/worklab/addMessage' , obj)
+  }
+
+  saveCode(code: string ,id :string){
+    const obj ={
+     code ,id
+    }
+    return this.http.post('http://localhost:4000/worklab/saveCode' , obj)
   }
 }

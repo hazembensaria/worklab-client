@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { initial } from 'cypress/types/lodash';
+import { UserService } from 'src/app/Services/user.service';
+import { WorklabService } from 'src/app/Services/workLab.service';
 
 @Component({
   selector: 'app-members',
@@ -6,10 +10,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./members.component.css']
 })
 export class MembersComponent implements OnInit {
-
-  constructor() { }
+members: any =[] ;
+workLabId ! : string ;
+workLab : any ;
+user ! : any ;
+  constructor(private workLabService :WorklabService , private route : ActivatedRoute , private userService : UserService) { }
 
   ngOnInit(): void {
+    console.log("memebres");
+    // console.log(this.route.pathFromRoot);
+this.workLabService.acceptEvent.subscribe(next=>{
+  this.initialse();
+})
+ this.initialse();
+    
   }
+private initialse(){
+  this.route.queryParams.subscribe(params => {
+    this.workLabId = params['message'];
+    console.log(this.workLabId);
+    this.workLabService.getWorklab({id : this.workLabId}).subscribe(worklab=>{
+      console.log(worklab);
+      this.workLab = worklab
+      
+      this.userService.getCurrentUser().subscribe(res=>{
+        this.user = res ; 
+        this.members = worklab.participants ;
+        this.members.push({ name : "auther" , id : worklab.auther});
+        
 
+       })
+    })
+  });
+}
 }

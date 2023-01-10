@@ -1,0 +1,12 @@
+.menmber::before{
+    content: "";
+ position: absolute;
+ display: block;
+ top: 40%;
+ left: -5px;
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ margin-right: .5rem;
+ background: #16a34a;   
+}

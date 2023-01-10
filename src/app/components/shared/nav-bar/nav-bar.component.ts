@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
 import {io} from 'socket.io-client' ;
 import { WorklabService } from 'src/app/Services/workLab.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -12,8 +13,9 @@ export class NavBarComponent implements OnInit {
   show = false
   showJoinWorklab = false ;
   socket : any ;
+  user :any ;
   readonly uri : string = 'http://localhost:4000'
-  constructor( private userService : UserService , private worklabService : WorklabService) { }
+  constructor( private userService : UserService , private worklabService : WorklabService , private router : Router) { }
 
   ngOnInit(): void {
     this.worklabService.openDialog.subscribe(next=>{
@@ -45,8 +47,9 @@ export class NavBarComponent implements OnInit {
     if(this.isConnected){
     //  this.loadUser()
     console.log("is connected");
+    this.userService.currentUser()
     this.userService.getCurrentUser().subscribe(res=>{
-      console.log(res);
+      this.user = res ,
       this.socket.emit('newUser', res._id);
     })
     }
@@ -60,7 +63,8 @@ export class NavBarComponent implements OnInit {
 
   logOut(){
     this.userService.logOut();
-    
+    this.isConnected =false ;
+    this.router.navigate(['/'])
   }
 hide(){
   this.show = !this.show

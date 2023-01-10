@@ -27,7 +27,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatButtonModule} from '@angular/material/button';
 import { ProblemsComponent } from './components/private/problems/problems.component'; 
 import {MatSelectModule} from '@angular/material/select';
-import { MembersComponent } from './components/public/members/members.component'; 
+import { MembersComponent } from './components/public/members/members.component';
+import { ChatComponent } from './components/public/chat/chat.component'; 
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MembersComponent } from './components/public/members/members.component'
 
     ProblemsComponent,
     MembersComponent,
+    ChatComponent,
     
    
    
@@ -69,7 +71,7 @@ import { MembersComponent } from './components/public/members/members.component'
 
    
     
-  ],
+
  
   bootstrap: [AppComponent]
 })
