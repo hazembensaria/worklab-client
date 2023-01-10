@@ -51,7 +51,16 @@ export class UserService {
             this.router.navigate(['home'])
             
           }
+          else{
+            alert("please check your creadentials")
+          }
     
+        },err=>{
+          console.log(err.error.message);
+          if(err.error.message){
+            alert("please check your creadentials");
+          }
+          
         })
       }
        //------------------------reset password---------------------------------
@@ -94,7 +103,9 @@ export class UserService {
       return this.http.get<{_id : string , name : string}>('http://localhost:4000/user')
   
     }
-
+currentUser(){
+  return this.user ;
+}
 
 
       private saveAuthData(token :string  ){
