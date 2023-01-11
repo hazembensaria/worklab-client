@@ -20,7 +20,7 @@ workLabId! : string ;
   constructor( private userService : UserService , private workLabService : WorklabService, private route : ActivatedRoute , private router :Router ) { }
   ngOnInit(): void {
     this.workLabService.socket?.on('accept', (obj :any)=>{
-      console.log(obj);
+      
       if(obj.worklabId === this.workLabId){
         this.invitations.push(obj);
       }
@@ -35,10 +35,10 @@ workLabId! : string ;
 
       // anotherOneAdded
       this.route.paramMap.subscribe(param=>{
-      this.workLabId=param.get("id")??""
-      this.workLabService.getWorklab({id : this.workLabId}).subscribe(worklab=>{
-        this.worklab = worklab ;
-        console.log(this.worklab);
+        this.workLabId=param.get("id")??""
+        this.workLabService.getWorklab({id : this.workLabId}).subscribe(worklab=>{
+          this.worklab = worklab ;
+          console.log(this.worklab);
         
         // this.userService.getCurrentUser().subscribe(res=>{
         //   this.currentUser = res ;
@@ -55,6 +55,11 @@ workLabId! : string ;
       })
     })
   
+       
+    // this.userService.getCurrentUser().subscribe(res=>{
+      
+    //   this.currentUser = res ;
+    // })
   }
  acceptUser(name : string , id : string){
   const participant = {name , id , worklabId : this.workLabId} ;

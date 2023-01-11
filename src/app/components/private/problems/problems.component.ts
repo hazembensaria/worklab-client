@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Problem } from 'src/app/Models/Problem.Model';
 import { AdminService } from 'src/app/Services/admin.service';
+import { ProblemService } from 'src/app/Services/problem.service';
 
 @Component({
   selector: 'app-problems',
@@ -20,23 +21,31 @@ export class ProblemsComponent implements OnInit {
   verifyPassword:boolean=false;
   problem!:Problem
 
-  constructor(private adminService:AdminService) { }
- Problems:string []=['aa','bb','cc','dd','ee','gg','sfd','sdlkfj'] ;
+  problemDescription:String="";
+
+  constructor(private adminService:AdminService,private problemService:ProblemService) { }
+ //Problems:string []=['aa','bb','cc','dd','ee','gg','sfd','sdlkfj'] ;
+ Problems:Problem []=[]
  
 
-  ngOnInit(): void {
+   ngOnInit (): void {
+    console.log("from ng onint");
+    
+     this.fetchProblems();
+   
+    
+    
   }
 
-  showPopUp(problem:string,index:number){
+  showPopUp(problem:Problem,id:string){
     console.log("popup");
-    this.problemName=problem
+    this.problemName=problem.name
+    this.problemDescription=problem.description;
     this.popup=!this.popup
   }
 
   onAddProblem(myForm:NgForm){
-
-    
-      this.problem={name:myForm.value.problemName,description:myForm.value.problemDescription,difficulty:this.selectedDifficulty}
+     this.problem={name:myForm.value.problemName,description:myForm.value.problemDescription,difficulty:this.selectedDifficulty,_id:""}
      this.verifyPassword=true;
      this.addProblemPopUp=false;
      
@@ -52,6 +61,9 @@ export class ProblemsComponent implements OnInit {
     this.selectedDifficulty=this.diffculty.nativeElement.value ;
   }
 
+
+  //---------------------------------------verify admin password to add new problem----------------------------------
+
   onSubmitPassword(myForm:NgForm){
       this.adminService.addProblem(this.problem,myForm.value.password).subscribe(res=>{
         console.log("res"+res.added);
@@ -63,14 +75,30 @@ export class ProblemsComponent implements OnInit {
        
         
       },err=>{
-        console.log(err);
+        console.log("hello from catch on submit password",err);
         alert("password incorrect try again");
         this.showAddProblemPopUp();
         
       })
   }
 
+  //-----------------------------------------show verifi password popUp--------------------------
+
   showVerifiedPasswordPopUp(){
     this.verifyPassword=false;
+  }
+
+  //------------------------------------------fetch problems from db------------------------
+
+  fetchProblems (){
+    this.problemService.fetchProblems().subscribe(res=>{
+      console.log("my res ",res);
+      res.problems.map((problem,index)=>{
+        this.Problems[index]=problem
+      })
+      
+    })
+    console.log("hiprob"+this.Problems.length);
+    
   }
 }

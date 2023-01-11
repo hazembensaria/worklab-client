@@ -63,8 +63,9 @@ export class NavBarComponent implements OnInit {
 
   logOut(){
     this.userService.logOut();
+
     this.isConnected =false ;
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 hide(){
   this.show = !this.show

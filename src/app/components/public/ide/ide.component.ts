@@ -30,6 +30,7 @@ export class IdeComponent implements OnInit {
       const aceEditor = ace.edit(this.editor.nativeElement);
       aceEditor.session.setValue(obj.msg);
    
+
       })
 
       this.worklabService.socket?.on('getExecuter', (obj :any)=>{
@@ -99,8 +100,9 @@ export class IdeComponent implements OnInit {
     console.log(this.participants);
     
     const aceEditor = ace.edit(this.editor.nativeElement);  
+    
     this.compilerService.compileCode(aceEditor.getValue()).subscribe(res=>{
-      console.log(res);
+     
       this.compiledCode = res
       
     })
