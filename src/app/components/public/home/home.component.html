@@ -22,7 +22,7 @@
     <div class="titles w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
       <div (click)="routing('')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   "  >chat</div>
       <div (click)="routing('members')"  class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   "  [matBadge]="worklab?.participants.length" matBadgeColor="warn">memebres</div>
-      <div class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">problem</div>
+      <div (click)="routing('problem')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">problem</div>
     </div>
     <div class="flex gap-4 p-2 text-white ">
         <p> auther : {{currentUser?.name}}</p>

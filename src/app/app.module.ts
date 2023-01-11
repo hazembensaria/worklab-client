@@ -29,6 +29,8 @@ import { ProblemsComponent } from './components/private/problems/problems.compon
 import { MatSelectModule } from '@angular/material/select';
 import { MembersComponent } from './components/public/members/members.component';
 import { ChatComponent } from './components/public/chat/chat.component';
+import { ProblemComponent } from './components/public/problem/problem.component';
+import { EditProfileComponent } from './components/private/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { ChatComponent } from './components/public/chat/chat.component';
     ProblemsComponent,
     MembersComponent,
     ChatComponent,
+    ProblemComponent,
+    EditProfileComponent,
 
 
 
