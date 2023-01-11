@@ -26,6 +26,6 @@ export class AdminService {
     
 
     return this.http.post<{message:string,added:boolean}>('http://localhost:4000/admin/addProblem',{problem,password,email:this.email});
-
+    
   }
 }

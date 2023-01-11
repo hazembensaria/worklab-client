@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Problem } from 'src/app/Models/Problem.Model';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ProblemService } from 'src/app/Services/problem.service';
+import { WorklabService } from 'src/app/Services/workLab.service';
 
 @Component({
   selector: 'app-problems',
@@ -19,11 +21,12 @@ export class ProblemsComponent implements OnInit {
   problemName:string="";
   selectedDifficulty:string="Eassy"
   verifyPassword:boolean=false;
-  problem!:Problem
+  problem!:Problem;
+  ProblemId:string="";
 
   problemDescription:String="";
 
-  constructor(private adminService:AdminService,private problemService:ProblemService) { }
+  constructor(private adminService:AdminService,private router:Router,private problemService:ProblemService,private worklabService:WorklabService) { }
  //Problems:string []=['aa','bb','cc','dd','ee','gg','sfd','sdlkfj'] ;
  Problems:Problem []=[]
  
@@ -38,6 +41,7 @@ export class ProblemsComponent implements OnInit {
   }
 
   showPopUp(problem:Problem,id:string){
+    this.ProblemId=id;
     console.log("popup");
     this.problemName=problem.name
     this.problemDescription=problem.description;
@@ -70,6 +74,7 @@ export class ProblemsComponent implements OnInit {
         if (res.added){
           this.showVerifiedPasswordPopUp();
           alert("problem added succfuly");
+          this.Problems.push(this.problem);
         }
         
        
@@ -100,5 +105,14 @@ export class ProblemsComponent implements OnInit {
     })
     console.log("hiprob"+this.Problems.length);
     
+  }
+
+  createRoom(workLabName:string,id:string){
+    console.log(workLabName);
+    
+    this.worklabService.createWorklab(workLabName).subscribe(res=>{
+      this.router.navigate([`worklab/${res}`],{ queryParams: { id: id }});
+      
+    })
   }
 }

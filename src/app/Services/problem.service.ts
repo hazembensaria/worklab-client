@@ -18,4 +18,8 @@ export class ProblemService {
    fetchProblems (){
     return this.http.get<{message:string,problems:Problem[]}>("http://localhost:4000/admin/getProblems")
    }
+
+   getProblem(id:string){
+      return this.http.get<{message:string,problem:Problem}>(`http://localhost:4000/admin/getProblem/:${id}`);
+   }
 }
