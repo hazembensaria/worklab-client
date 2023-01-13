@@ -20,6 +20,7 @@ export class IdeComponent implements OnInit {
   participants : any =[] ;
   compiledCode :any
   workLabId ! :string ;
+  enableEditing = true
   workLab :any ; 
   @ViewChild("editor") private editor!: ElementRef<HTMLElement>;
   
@@ -32,6 +33,21 @@ export class IdeComponent implements OnInit {
    
 
       })
+      this.worklabService.socket?.on('enableOk', (obj :any)=>{
+        console.log("hi hazem from enable");
+      const aceEditor = ace.edit(this.editor.nativeElement);
+        
+        aceEditor.setReadOnly(true)
+  
+        })
+
+        this.worklabService.socket?.on('denableOk', (obj :any)=>{
+          console.log("hi hazem from denable");
+        const aceEditor = ace.edit(this.editor.nativeElement);
+          
+          aceEditor.setReadOnly(false)
+    
+          })
 
       this.worklabService.socket?.on('getExecuter', (obj :any)=>{
         const aceEditor = ace.edit(this.editor.nativeElement);  
@@ -83,6 +99,7 @@ export class IdeComponent implements OnInit {
     
     const aceEditor = ace.edit(this.editor.nativeElement);
     // aceEditor.session.setValue(this.workLab?.code);
+    // if(!this.enableEditing){ aceEditor.setReadOnly(true);}
     aceEditor.setTheme("ace/theme/tomorrow_night");
     aceEditor.session.setMode("ace/mode/javascript");
     aceEditor.setOptions({

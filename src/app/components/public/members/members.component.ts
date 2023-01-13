@@ -13,10 +13,14 @@ export class MembersComponent implements OnInit {
 members: any =[] ;
 workLabId ! : string ;
 workLab : any ;
+enabledPerson! :string ;
+
 user ! : any ;
   constructor(private workLabService :WorklabService , private route : ActivatedRoute , private userService : UserService) { }
 
   ngOnInit(): void {
+    // enableOk
+  
     console.log("memebres");
     // console.log(this.route.pathFromRoot);
 this.workLabService.acceptEvent.subscribe(next=>{
@@ -42,5 +46,14 @@ private initialse(){
        })
     })
   });
+}
+enable(id: string){
+  this.workLabService.socket.emit("denable",{auther : this.members})
+    const me = this.members.filter((object :any) => {
+         return object.id !== id;
+      });
+      console.log(me);
+      this.workLabService.socket.emit("enable",{auther : me})
+      
 }
 }

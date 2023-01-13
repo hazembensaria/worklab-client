@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ace from "ace-builds";
-
+import { faGears , faBarsProgress , faUsersGear ,faGraduationCap , faComment , faQuestion , faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -8,6 +8,13 @@ import * as ace from "ace-builds";
 })
 export class LandingPageComponent implements OnInit , AfterViewInit {
   codeee :any 
+  usersGear = faUsersGear
+  gear = faGears
+  gc =faGraduationCap
+  comment = faComment
+  question =faQuestion
+  magic = faWandMagicSparkles
+  bar = faBarsProgress
   @ViewChild("editor")
   private editor!: ElementRef<HTMLElement>;
   constructor() { }
