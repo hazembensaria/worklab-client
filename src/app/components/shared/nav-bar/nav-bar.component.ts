@@ -3,17 +3,20 @@ import { UserService } from 'src/app/Services/user.service';
 import {io} from 'socket.io-client' ;
 import { WorklabService } from 'src/app/Services/workLab.service';
 import { Router } from '@angular/router';
+import { faUserPen } from '@fortawesome/free-solid-svg-icons';
+import { User } from 'src/app/Models/user-model';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  icon=faUserPen
   isConnected :boolean = false
   show = false
   showJoinWorklab = false ;
   socket : any ;
-  user :any ;
+  user !:User ;
   readonly uri : string = 'http://localhost:4000'
   constructor( private userService : UserService , private worklabService : WorklabService , private router : Router) { }
 
@@ -34,7 +37,9 @@ export class NavBarComponent implements OnInit {
     this.userService.authListner.subscribe(next=>{
       if(next)
       {this.isConnected =true
-      console.log("from sub 1");}
+      console.log("from sub 1");
+      this.user=this.userService.user
+    }
       
       else{
         this.isConnected =false
@@ -47,10 +52,12 @@ export class NavBarComponent implements OnInit {
     if(this.isConnected){
     //  this.loadUser()
     console.log("is connected");
-    this.userService.currentUser()
+    this.user=this.userService.currentUser()
     this.userService.getCurrentUser().subscribe(res=>{
       this.user = res ,
-      this.socket.emit('newUser', res._id);
+      console.log(this.user);
+      
+      this.socket.emit('newUser', this.user._id);
     })
     }
     
@@ -61,11 +68,11 @@ export class NavBarComponent implements OnInit {
   }
 
 
-  logOut(){
+   logOut (){
     this.userService.logOut();
-
     this.isConnected =false ;
-    this.router.navigate(['/']);
+     
+     this.router.navigate(['/']);
   }
 hide(){
   this.show = !this.show

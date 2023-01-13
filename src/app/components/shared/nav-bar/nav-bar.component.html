@@ -1,40 +1,64 @@
 <div class="father w-full h-[10vh] bg-[#01192f] flex text-white items-center justify-around ">
     <div class="logo hover:cursor-pointer" routerLink="/">
-       <!-- <img class=" w-[60px] h-[60px] " src="../../../../assets/images/worklab-logo.png" alt=""> -->
-     <div class=" font-semibold text-3xl text-[#be8a28] ">  <\ WorkLab ></div>
+        <!-- <img class=" w-[60px] h-[60px] " src="../../../../assets/images/worklab-logo.png" alt=""> -->
+        <div class=" font-semibold text-3xl text-[#be8a28] ">
+            <\ WorkLab>
+        </div>
     </div>
 
-    <ul class=" flex justify-center items-center gap-8" >
-        <li *ngIf="!isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " routerLink="/login">
-        login
+    <ul class=" flex justify-center items-center gap-8">
+        <li *ngIf="!isConnected"
+            class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "
+            routerLink="/login">
+            login
         </li>
-        <li *ngIf="!isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " routerLink="/register">
+        <li *ngIf="!isConnected"
+            class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "
+            routerLink="/register">
             register
         </li>
-        <li *ngIf="isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "  routerLink="/home">
+        <li *ngIf="isConnected"
+            class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "
+            routerLink="/home">
             home
         </li>
-        <li (click)="joinWorklab()" *ngIf="isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " >
+        <li (click)="joinWorklab()" *ngIf="isConnected"
+            class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer ">
             join Worklab
         </li>
-        <li *ngIf="isConnected" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer " (click)="hide()">
-            make Worklab 
+        <li *ngIf="isConnected"
+            class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "
+            (click)="hide()">
+            make Worklab
         </li>
-        
-        <li  class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "  routerLink="/problems">
+
+        <li class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "
+            routerLink="/problems">
             Problems
-        </li>  
-        
-        <li *ngIf="isConnected" (click)="logOut()" class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "  routerLink="/">
+        </li>
+
+        <li *ngIf="isConnected" (click)="logOut()"
+            class=" hover:bg-green-600 p-2 hover:rounded-md flex justify-center items-center hover:cursor-pointer "
+            routerLink="/">
             LogOut
         </li>
-       
+
     </ul>
 
-    <div *ngIf="isConnected">
-        {{user?.name}}
+    <div class="profile flex gap-4 cursor-pointer px-4 py-1 rounded-[25px] bg-[#07345f] " routerLink="/editProfile"
+        *ngIf="isConnected">
+
+        <div>
+            {{user?.name}}
+        </div>
+        <div class="text-white " *ngIf="isConnected">
+
+            <fa-icon [icon]="icon" class="text-[#fff]  text-[15px] "></fa-icon>
+        </div>
+
     </div>
-    
+
+
 </div>
 <app-create-worklab *ngIf="show"></app-create-worklab>
-<app-join-worklab *ngIf="showJoinWorklab" ></app-join-worklab>
+<app-join-worklab *ngIf="showJoinWorklab"></app-join-worklab>

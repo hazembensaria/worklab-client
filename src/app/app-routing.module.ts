@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditProfileComponent } from './components/private/edit-profile/edit-profile.component';
 import { ProblemsComponent } from './components/private/problems/problems.component';
 import { ResetPageComponent } from './components/private/reset-page/reset-page.component';
 import { ChatComponent } from './components/public/chat/chat.component';
@@ -19,6 +20,10 @@ const routes: Routes = [
   },
   {
     path:"problems",component:ProblemsComponent
+
+  },
+  {
+    path:"editProfile",component:EditProfileComponent
 
   },
   {
