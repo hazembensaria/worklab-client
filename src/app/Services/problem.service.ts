@@ -19,7 +19,13 @@ export class ProblemService {
     return this.http.get<{message:string,problems:Problem[]}>("http://localhost:4000/admin/getProblems")
    }
 
-   getProblem(id:string){
+   getProblem(id:string)
+   {
       return this.http.get<{message:string,problem:Problem}>(`http://localhost:4000/admin/getProblem/${id}`);
+   }
+
+   addComment(comment:string,id:string)
+   {
+    return this.http.put<{rows:any,userId:string}>("http://localhost:4000/admin/addComment",{comment,id})
    }
 }

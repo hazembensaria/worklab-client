@@ -21,42 +21,38 @@ export class ProblemComponent implements OnInit {
 
     this.initialse()
   
-    
-    // this.route.queryParams.subscribe(params=>{
-    //   console.log("params:params");
-      
-    //   this.ProblemId=params["id"];
-    //   console.log("id:"+this.ProblemId);
-      
-    //   this.problemService.getProblem(this.ProblemId).subscribe(res=>{
-    //     this.problem=res.problem;
-    //     console.log("room problem:"+this.problem);
-        
-    //   },err=>{
-    //     console.log("error");
-        
-    //   });
-    // })
   }
 
   private initialse(){
     this.route.queryParams.subscribe(params => {
       this.workLabId = params['message'];
-      // console.log(this.workLabId);
-      this.workLabService.getWorklab({id : this.workLabId}).subscribe(worklab=>{
-        console.log(worklab);
-        this.workLab = worklab
-        console.log(this.workLab.problemId);
-        if(this.workLab.problemId){
 
-          this.problemService.getProblem(this.workLab.problemId).subscribe(res=>{
-              this.problem = res.problem ;
-              console.log(this.problem);
-              
-          })
-        }
-        
+      if(this.workLabId){
+        this.workLabService.getWorklab({id : this.workLabId}).subscribe(worklab=>{
+          console.log(worklab);
+          this.workLab = worklab
+          console.log(this.workLab.problemId);
+          if(this.workLab.problemId){
+  
+            this.problemService.getProblem(this.workLab.problemId).subscribe(res=>{
+                this.problem = res.problem ;
+                console.log(this.problem);
+                
+            })
+          }
+          
+        })
+      }
+      else{
+        const problemId = params['id'];
+        this.problemService.getProblem(problemId).subscribe(res=>{
+          this.problem = res.problem ;
+          console.log(this.problem);
+          
       })
+      }
+      // console.log(this.workLabId);
+     
     });
   }
 
