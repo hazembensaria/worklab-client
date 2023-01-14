@@ -20,6 +20,6 @@ export class ProblemService {
    }
 
    getProblem(id:string){
-      return this.http.get<{message:string,problem:Problem}>(`http://localhost:4000/admin/getProblem/:${id}`);
+      return this.http.get<{message:string,problem:Problem}>(`http://localhost:4000/admin/getProblem/${id}`);
    }
 }
