@@ -9,9 +9,11 @@ import { IdeComponent } from './components/public/ide/ide.component';
 import { LandingPageComponent } from './components/public/landing-page/landing-page.component';
 import { LoginComponent } from './components/public/login/login.component';
 import { MembersComponent } from './components/public/members/members.component';
+import { ProblemCommentsComponent } from './components/public/problem-comments/problem-comments.component';
 import { ProblemComponent } from './components/public/problem/problem.component';
 import { RegisterComponent } from './components/public/register/register.component';
 import { ResetPasswordComponent } from './components/public/reset-password/reset-password.component';
+import { SolveProblemComponent } from './components/public/solve-problem/solve-problem.component';
 
 
 const routes: Routes = [
@@ -24,6 +26,17 @@ const routes: Routes = [
   },
   {
     path:"editProfile",component:EditProfileComponent
+
+  },
+  {
+    path:"solveProblem/:id",component:SolveProblemComponent,children:[
+      {
+        path:"problem",component:ProblemComponent
+      },
+      {
+        path:"discussion",component:ProblemCommentsComponent
+      }
+    ]
 
   },
   {

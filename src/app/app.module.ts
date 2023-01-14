@@ -31,6 +31,8 @@ import { MembersComponent } from './components/public/members/members.component'
 import { ChatComponent } from './components/public/chat/chat.component';
 import { ProblemComponent } from './components/public/problem/problem.component';
 import { EditProfileComponent } from './components/private/edit-profile/edit-profile.component';
+import { SolveProblemComponent } from './components/public/solve-problem/solve-problem.component';
+import { ProblemCommentsComponent } from './components/public/problem-comments/problem-comments.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { EditProfileComponent } from './components/private/edit-profile/edit-pro
     ChatComponent,
     ProblemComponent,
     EditProfileComponent,
+    SolveProblemComponent,
+    ProblemCommentsComponent,
 
 
 
