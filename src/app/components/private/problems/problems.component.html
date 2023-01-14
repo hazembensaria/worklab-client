@@ -5,7 +5,7 @@
         <div class="problems w-2/4 gap-3 flex   flex-col ">
             <div class="desc flex justify-between pl-4 pr-5 ">
                 <h3>Problem</h3>
-                <h3> Difficulty <button *ngIf="isAdmin" (click)="showAddProblemPopUp()"
+                <h3> Difficulty <button *ngIf="isAdmin&&isLogedIn" (click)="showAddProblemPopUp()"
                         class="text-green-700 shadow-lg ml-2 hover:bg-green-800 hover:text-white pr-1 pl-1 rounded-lg">+</button>
                 </h3>
             </div>
@@ -14,7 +14,7 @@
     
                 <div (click)="showPopUp(problem,problem._id)" *ngIf=!(i%2)
                     class="p-5 flex justify-between hover:cursor-pointer shadow-sm rounded-md">
-                    <div> {{i+1+". "+problem.name}}</div>
+                    <div> <h1>{{i+1+". "+problem.name}}</h1> </div>
                     <div class="difficulty">hard</div>
                 </div>
                 <div (click)="showPopUp(problem,problem._id)" *ngIf=i%2
@@ -42,15 +42,15 @@
         <div class="container relative  h-full ">
     
     
-            <h1>{{problemName}}</h1>
-            <p>
+            <h1 class="">{{problemName}}:</h1>
+            <p class="overflow-scroll h-[70%]">
                 {{problemDescription}}
             </p>
             <div class=" flex justify-between  absolute bottom-3 w-full ">
                 <button (click)="createRoom(problemName,ProblemId)" class="addToRoom shadow-lg p-3 rounded-md hover:scale-105">
                     Create new Room
                 </button>
-                <button class="solveProblem shadow-lg p-3 rounded-md hover:scale-105">
+                <button (click)="solveProblem(ProblemId)" class="solveProblem shadow-lg p-3 rounded-md hover:scale-105">
                     solve It
                 </button>
             </div>
@@ -81,6 +81,14 @@
                     <option value="Eassy" default>Eassy</option>
                     <option value="Meduim">Meduim</option>
                     <option value="Hard">Hard</option>
+                </select>
+
+                <select #category (change)="onChangeCategory()" class="p-2 hover:cursor-pointer">
+                    <option value="Arrays" default>Arrays</option>
+                    <option value="ArrayList">ArrayList</option>
+                    <option value="Tree">Tree</option>
+                    <option value="LinkedList">LinkedList</option>
+                    <option value="Map">Map</option>
                 </select>
     
     

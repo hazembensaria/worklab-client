@@ -1,0 +1,34 @@
+
+<div class="container flex justify-between">
+  <div class="ProblemAndDiscussion flex flex-col w-[49%]">
+
+    <div class="nav max-h-[10vh] flex gap-3 min-h-[7vh] ml-4">
+      <button class="border-r-2" (click)="routing('problem')">Problem</button>
+      <button (click)="routing('discussion')">Discussion(78)</button>
+    </div>
+    <div class="min-h-[80vh]   bg-gray-600 rounded-md ">
+      <!-- <div class="titles w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
+        <div (click)="routing('')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">chat</div>
+        <div (click)="routing('members')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   "
+          [matBadge]="worklab?.participants.length" matBadgeColor="warn">memebres</div>
+        <div (click)="routing('problem')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">problem
+        </div>
+      </div>
+      <div class="flex gap-4 p-2 text-white ">
+    
+    
+      </div> -->
+    
+    
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  
+  <div class="ide w-1/2 ">
+  
+    <app-ide></app-ide>
+  
+  </div>
+
+</div>
+

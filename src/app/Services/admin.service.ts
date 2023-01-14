@@ -25,7 +25,7 @@ export class AdminService {
     console.log(problem,password,this.email);
     
 
-    return this.http.post<{message:string,added:boolean}>('http://localhost:4000/admin/addProblem',{problem,password,email:this.email});
+    return this.http.post<{message:string,problem:Problem}>('http://localhost:4000/admin/addProblem',{problem,password,email:this.email});
     
   }
 }

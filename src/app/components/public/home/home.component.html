@@ -1,4 +1,3 @@
-
 <div *ngIf="invitations.length" class=" flex items-end gap-2 p-2 absolute right-0 z-50  flex-col w-[25%] px-4 ">
   <div *ngFor="let invitation of invitations" class=" bg-[#47f68d] rounded-md shadow-lg p-2 ">
     <div class=" flex w-full items-center justify-between   ">
@@ -6,8 +5,9 @@
       <fa-icon [icon]="fax"></fa-icon>
     </div>
     <div class=" w-full flex justify-center gap-8 items-center ">
-      <button (click)="acceptUser(invitation.participantName ,invitation.participantId )" class=" bg-white rounded-md px-8 ">accept</button>
-    <button class=" bg-red-200 text-red-500 rounded-md px-8 ">refuse</button>
+      <button (click)="acceptUser(invitation.participantName ,invitation.participantId )"
+        class=" bg-white rounded-md px-8 ">accept</button>
+      <button class=" bg-red-200 text-red-500 rounded-md px-8 ">refuse</button>
     </div>
     <!-- <p>{{invitation.participantId}}</p> -->
   </div>
@@ -20,6 +20,7 @@
   </div>
   <div class="min-h-[90vh] lg:w-[39%] sm:w-full bg-gray-600 rounded-md ">
     <div class="titles w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
+
       <div (click)="routing('')" class=" bg-[#f5f4f3] py-1 px-2 rounded-t-md hover:cursor-pointer   " >chat</div>
       <div (click)="routing('members')"  class=" bg-[#f5f4f3] py-1 px-2 rounded-t-md hover:cursor-pointer   "  [matBadge]="worklab?.participants.length" matBadgeSize="small" matBadgeColor="warn">memebres</div>
       <div (click)="routing('problem')" class=" bg-[#f5f4f3] py-1 px-2 rounded-t-md hover:cursor-pointer   ">problem</div>
@@ -32,5 +33,7 @@
     </div>
     <router-outlet  ></router-outlet>
   </div>
-</div>
-
+</div>     
+      
+      
+   
