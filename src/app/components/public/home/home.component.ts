@@ -19,13 +19,18 @@ participants : any =[] ;
 workLabId! : string ;
   constructor( private userService : UserService , private workLabService : WorklabService, private route : ActivatedRoute , private router :Router ) { }
   ngOnInit(): void {
+    this.workLabService.socket?.on('removed', (obj :any)=>{
+      
+      this.router.navigate(["/home"])
+        
+        })
 
     this.workLabService.removeParticipant.subscribe(next=>{
       console.log(next);
       this.workLabService.deleteParticipantFromWorklab(next ,this.workLabId).subscribe(res=>{
         this.workLabService.getWorklab({id : this.workLabId}).subscribe(worklab=>{
           this.worklab = worklab ;
-    this.workLabService.socket.emit("anotherOne" , { to : this.worklab.participants})
+      this.workLabService.socket.emit("anotherOne" , { to : this.worklab.participants})
 
      
         })

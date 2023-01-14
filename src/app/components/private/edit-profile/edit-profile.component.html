@@ -1,28 +1,37 @@
-<div class="container bg-blue-400  h-[90vh]  flex justify-center flex-col gap-2  items-center">
+<div class="container  w-[90%]     h-[60vh]  flex justify-center flex-col gap-2 pl-[10%] ">
 
-    <h1>Edit Your Profile!</h1>
+    <h1 class=" sm:text-lg lg:text-4xl font-medium text-[#01192f] sm:w-full ">Edit Your Profile!🧐👌👌</h1>
 
     <div
-        class="editProfile  w-[60vw] h-[70vh] rounded-lg shadow-xl bg-red-50 flex flex-col  justify-center items-center">
+        class="editProfile  w-[60vw]  rounded-lg flex flex-col ">
 
-        <div class="form flex gap-5 flex-col p-2">
+        <div class="form w-full flex gap-4 flex-col p-2">
 
             <div class="name">
 
-                <h1>Name:</h1>
-                <input type="text" [(ngModel)]="name" class="rounded-md">
+                <h1 class=" text-lg font-medium ">Name:</h1>
+                <input type="text" [(ngModel)]="name" class="rounded-md border border-solid border-black bg-transparent outline-none px-2">
             </div>
             <div class="email">
 
-                <h1>Email:</h1> <input disabled [value]="user.email " type="email" class="rounded-md px-1" name=""
+                <h1 class="text-lg font-medium ">Email:</h1>
+                <p class=" text-xs text-gray-600 first-letter:text-red-500 first-letter:font-medium first-letter:text-[13px] ">Note: this field can't be changed!</p>
+                 <input disabled [value]="user.email " type="email" class="rounded-md border w-[30%] border-solid border-black outline-none px-2" name=""
                     id="">
 
             </div>
-            <button class="bg-blue-400 rounded-lg shadow-xl p-2" (click)="changePassword()"> change password!</button>
+            <div class=" flex gap-[5rem] w-full items-center  ">
+
+                <button class="bg-[#22c55e] shadow-xl  text-white w-[10%]  px-5 py-1 rounded-lg" (click)="editProfile()">Edit !</button>
+              
+                        <!-- <p class=" text-xs text-gray-600 first-letter:text-red-500 first-letter:font-medium first-letter:text-[13px] ">Note: this field can't be changed!</p> -->
+    
+                        <button class="bg-[#22c55e] text-white w-[30%] rounded-lg shadow-xl px-2 py-1" (click)="changePassword()"> change password!</button>
+                    
+            </div>
 
         </div>
 
-        <button class="bg-blue-400 mt-5 px-5 py-1 rounded-xl" (click)="editProfile()">Edit !</button>
 
 
     </div>
@@ -30,27 +39,28 @@
 
 </div>
 
-<div class="container bg-blue-400  h-[90vh]  flex justify-center flex-col gap-3 items-center">
-    <h1>Your workLabs</h1>
+<div class="container   pl-[10%] text-[#07345f]    flex  flex-col gap-3 ">
+    <h1  class=" text-4xl font-medium  ">Your Current workLabs 👨‍💻</h1>
 
 
-    <div class="editWorkLabs  w-[60vw] h-[70vh] rounded-lg shadow-xl bg-red-50 flex  ">
+    <div class="editWorkLabs  w-full  flex  ">
 
-        <div class="worklabs">
-            <div class="worklab  " *ngFor="let lab of LabsInfo">
+        <div class="worklabs w-[60%]">
+            <div class="worklab mt-3 border-b border-solid border-gray-300 pb-2 " *ngFor="let lab of LabsInfo">
 
                 <div class="worklabs flex justify-between w-full  ">
-                    <div class="worklabName">
-                        <h1>{{lab.name}}</h1>
+                    <div >
+                        <h1 class="worklabName text-xl font-medium">{{lab.name}}</h1>
+                        <p class=" text-xs text-gray-800 ">{{lab.createdAt | date }}</p>
                     </div>
                     <div class="openDelete flex gap-3 ">
                         <div class="delete cursor-pointer mr-5 ml-4" (click)="deleteLab(lab._id)">
 
-                            <fa-icon [icon]="trash" class="text-[#fff] text-blue-400 text-[15px]  "></fa-icon>
+                            <fa-icon [icon]="trash" class=" text-[#07345f] text-[15px]  "></fa-icon>
                         </div>
                         <div class="join cursor-pointer" (click)="visitLab(lab._id)">
 
-                            <fa-icon [icon]="enter"  class="text-[#fff] text-blue-400 text-[15px] "></fa-icon>
+                            <fa-icon [icon]="enter"  class=" text-[#07345f] text-[15px] "></fa-icon>
                         </div>
                     </div>
 

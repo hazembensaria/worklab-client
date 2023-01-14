@@ -1,4 +1,4 @@
-<div class="father flex flex-col justify-between bg-gray-100 w-full h-[37.7rem] rounded-b-md ">
+<div class="father flex flex-col justify-between bg-gray-100 w-full h-[35.1rem] rounded-b-md ">
     <div class=" overflow-y-scroll scroll-smooth bg-[#f5f4f3] p-2 h-[92%] w-full flex flex-col-reverse justify-start " #chatbox >
         <div class="typing text-xs gap-1 text-[#22c55e] flex justify-start  items-center " *ngIf="typingPeople.size" >
             <div *ngFor="let t of typingPeople ">
@@ -8,7 +8,7 @@
         </div>
         <div class=" max-w-[50%]" *ngFor="let message of chat" [ngClass]="{' self-end ': user?._id===message?.sender }"  >
             <div class="chat w-full font-medium rounded-b-[20px]  m-[2px] px-2 text-white bg-white py-1 " (dblclick)="showDate()"
-            [ngClass]="{'bg-[#345dfd]  rounded-tl-[20px] ': user?._id===message?.sender 
+            [ngClass]="{'bg-[#345dfd] text-white rounded-tl-[20px] ': user?._id===message?.sender 
         , 'rounded-tr-[20px] text-[#01192f]' : user?._id!==message?.sender }"  >{{message?.msg}}</div>
             <div *ngIf="showDat" class=" text-gray-400 text-xs ">{{message?.date | date}}</div>
             <div class=" w-full text-xs float-right text-gray-500 " [ngClass]="{' text-right  ': user?._id===message?.sender }"><span *ngIf=" user?._id!==message?.sender ">{{message.name}}</span><span *ngIf=" user?._id===message?.sender ">you</span></div>
