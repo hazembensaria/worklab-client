@@ -1,10 +1,11 @@
-<div class="father bg-white h-[37.7rem] w-full ">
+<div class="father bg-[#f5f4f3] h-[35.1rem] w-full ">
     <div class="members   flex flex-col gap-2 text-lg font-medium p-2">
+        <button (click)="enableAll()" class=" bg-[#22c55e] rounded-[25px] text-white mr-2 mb-8 w-[30%] self-end ">Get all permission</button>
         <div class="menmber relative px-2 gap-2 items-center justify-start flex " *ngFor="let member of members">
             <div class="flex  w-full justify-between ">{{member.name}} 
                 <div class=" flex gap-2 " *ngIf="workLab?.auther==user?._id">
-                    <p class=" bg-green-700 text-white px-2 rounded-lg" (click)="enable(member.id)">permission</p>
-                    <p class=" bg-red-700 text-white px-2 rounded-lg" (click)="removeParticipant(member.id)">remove</p>
+                    <button class=" bg-[#07345f] text-white px-2 rounded-md" (click)="enable(member.id)">permission</button>
+                    <button class=" bg-red-500 text-white px-2 rounded-md" (click)="removeParticipant(member.id)">remove</button>
 
                 </div>
             </div>

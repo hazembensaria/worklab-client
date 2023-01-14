@@ -9,14 +9,14 @@
 {{codeee}} -->
 
 <div class="father w-full bg-[#f6f9fc] ">
-<div class="first relative h-[60vh] bg-[#01192f] w-full pl-[15%] pt-[10%] ">
-  <div class=" text-white w-[40%] flex flex-col gap-8 items-start ">
+<div class="first relative sm:h-[40vh] lg:h-[60vh] bg-[#01192f] w-full pl-[15%] pt-[10%] ">
+  <div class=" text-white sm:w-full lg:w-[40%] flex flex-col gap-8 items-start ">
     <p class=" text-4xl font-medium ">WorkLab</p>
     <p class=" text-xl ">The ultimate resource to prepare for coding interviews.
       Everything you need, in one streamlined platform.</p>
       <button routerLink="/login" class=" bg-[#626ee3] w-[40%] h-[3rem] rounded-md ">Login to WorkLab</button>
   </div>
-        <div class="flex rot flex-wrap justify-between items-end gap-2 absolute w-[45%] h-[35rem] right-[5%] top-[10%]   rounded-md ">
+        <div class="flex rot sm:hidden lg:flex flex-wrap justify-between items-end gap-2 absolute w-[45%] h-[35rem] right-[5%] top-[10%]   rounded-md ">
             <div class="scal w-[49%] h-[55%] border-2 rounded-md  border-solid border-[#15314b] bg-[#02203c]  ">
 
               <div class="top w-full h-[2rem] bg-[#15314b] rounded-sm font-medium text-white pl-2 ">Prompt</div>
@@ -91,24 +91,24 @@
           <div class=" rounded-md h-full w-[15%] bg-[#78c078]"></div>
           <div class=" rounded-md h-full w-[35%] bg-[#5e5efb]"></div>
 
+          </div>
+          <div class=" w-[75%] h-4 rounded-md flex gap-1 ml-8 ">
+            <div class=" rounded-md w-[35%] h-full bg-[#be8a28]"></div>
+            <div class=" rounded-md h-full w-[12%] bg-[#78c078]"></div>
+            <div class=" rounded-md h-full w-[45%] bg-[#be8a28]"></div>
+            <div class=" rounded-md h-full w-[8%] bg-[#78c078]"></div>
+
+        </div>
+        <div class=" w-[70%] h-4 rounded-md flex gap-1 ml-8">
+          <div class=" rounded-md w-[25%] h-full bg-[#5a395a] "></div>
+          <div class=" rounded-md h-full w-[10%] bg-[#be8a28] "></div>
+          <div class=" rounded-md h-full w-[45%] bg-[#5e5efb]"></div>
+          <div class=" rounded-md h-full w-[20%] bg-[#be8a28]"></div>
+
       </div>
-      <div class=" w-[75%] h-4 rounded-md flex gap-1 ml-8 ">
-        <div class=" rounded-md w-[35%] h-full bg-[#be8a28]"></div>
-        <div class=" rounded-md h-full w-[12%] bg-[#78c078]"></div>
-        <div class=" rounded-md h-full w-[45%] bg-[#be8a28]"></div>
-        <div class=" rounded-md h-full w-[8%] bg-[#78c078]"></div>
-
-    </div>
-    <div class=" w-[70%] h-4 rounded-md flex gap-1 ml-8">
-      <div class=" rounded-md w-[25%] h-full bg-[#5a395a] "></div>
-      <div class=" rounded-md h-full w-[10%] bg-[#be8a28] "></div>
-      <div class=" rounded-md h-full w-[45%] bg-[#5e5efb]"></div>
-      <div class=" rounded-md h-full w-[20%] bg-[#be8a28]"></div>
-
-  </div>
-  <div class=" w-[25%] h-4 rounded-md flex gap-1 ml-4 ">
-    <div class=" rounded-md w-[45%] h-full bg-[#78c078]"></div>
-    <div class=" rounded-md h-full w-[40%] bg-[#be8a28] "></div>
+      <div class=" w-[25%] h-4 rounded-md flex gap-1 ml-4 ">
+        <div class=" rounded-md w-[45%] h-full bg-[#78c078]"></div>
+        <div class=" rounded-md h-full w-[40%] bg-[#be8a28] "></div>
 
 </div>
   
@@ -172,32 +172,32 @@
 
         </div>
 </div>
-<div class="second w-full h-[100vh] pt-[11rem] ">
-  <div class=" m-auto w-[20%] text-4xl font-medium mb-8 ">What is WorkLab ?</div>
+<div class="second w-full lg:h-[100vh] sm:pt-8 lg:pt-[11rem] ">
+  <div class=" m-auto sm:w-[70%] lg:w-[20%] text-4xl font-medium lg:mb-8 sm:mb-4">What is WorkLab ?</div>
 
-  <div class="branches w-[80%] gap-[5%] flex flex-wrap m-auto  ">
-    <div class="branch my-4 w-[30%] hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer ">
+  <div class="branches sm:w-full lg:w-[80%] gap-[5%] flex sm:justify-center flex-wrap m-auto  ">
+    <div class="branch my-4 sm:w-[80%] lg:w-[30%] hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer ">
       <div class="title text-center text-[#17334d] text-lg font-medium ">160 Hand-Picked Questions</div>
       <div class="body text-[#4f6777] text-center">Coding interview prep is a numbers game
          that many candidates lose. We've hand-picked 160 of the
          best coding interview questions to prepare you for every
           interview you could encounter.</div>
     </div>
-    <div class="branch text-center my-4 w-[30%] bg-gray-50 hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer">
+    <div class="branch text-center my-4 sm:w-[80%] lg:w-[30%] bg-gray-50 hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer">
       <div class="title text-lg font-medium text-[#17334d]">Data Structures Crash Course</div>
       <div class="body text-[#4f6777] text-center">Data structures are the pillars
          of coding interviews. Our video series gives you the
          foundational knowledge you need to be
           well-versed in all of the popular data structures.</div>
     </div>
-    <div class="branch text-center my-4 w-[30%] bg-gray-50 hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer">
+    <div class="branch text-center my-4 sm:w-[80%] lg:w-[30%] bg-gray-50 hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer">
       <div class="title text-[#17334d] text-lg font-medium">Data Structures Crash Course</div>
       <div class="body text-[#4f6777] text-center">Data structures are the pillars
          of coding interviews. Our video series gives you the
          foundational knowledge you need to be
           well-versed in all of the popular data structures.</div>
     </div>
-    <div class="branch text-center my-4 w-[30%] bg-gray-50 hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer">
+    <div class="branch text-center my-4 sm:w-[80%] lg:w-[30%] bg-gray-50 hover:bg-[#fbfbfb] hover:shadow-2xl rounded-md p-4 hover:cursor-pointer">
       <div class="title text-cyan-900 text-lg font-medium">Data Structures Crash Course</div>
       <div class="body text-[#4f6777] text-center">Data structures are the pillars
          of coding interviews. Our video series gives you the
@@ -208,23 +208,23 @@
 </div>
 </div>
   <div class=" p-2 bg-[#f6f9fc] ">
-    <div class="m-auto flrx justify-center w-[80%]">
+    <div class="m-auto flrx justify-center sm:w-full lg:w-[80%]  ">
       <h1 class=" text-4xl font-medium text-[#01192f] text-center ">Try some code</h1>
       <app-ide></app-ide>
-
+   
     </div>
   </div>
   <div class="py-[5rem] w-full section4 bg-[#f6f9fc] ">
     <h1 class=" text-4xl font-medium text-[#01192f] text-center my-4 ">What can you get from Worklab </h1>
-  <div class="slider">
-    <div class="slide-track">
-        <div class="slide">Collaboration  <fa-icon [icon]="usersGear" class="text-[70px] text-[#626ee3] "></fa-icon></div>
-        <div class="slide">programation skills  <fa-icon [icon]="magic" class="text-[70px] text-[#626ee3]"></fa-icon></div>
-        <div class="slide">E-learning <fa-icon [icon]="gc" class="text-[70px] text-[#626ee3]"></fa-icon></div>
-        <div class="slide">Advice for programing <fa-icon [icon]="comment" class="text-[70px] text-[#626ee3]"></fa-icon></div>
-        <div class="slide">Mock interview Question <fa-icon [icon]="question" class="text-[70px] text-[#626ee3]"></fa-icon></div>
-        <div class="slide">get solution for problems  <fa-icon [icon]="gear" class=" text-[70px] text-[#626ee3]  "></fa-icon></div>
-        <div class="slide">Managing your students , Learners <fa-icon [icon]="bar" class="text-[70px] text-[#626ee3]"></fa-icon></div>
+  <div class="slider bg-white lg:h-[250px] sm:h-[100px] m-auto overflow-hidden relative w-full ">
+    <div class="slide-track flex">
+        <div class="slide">Collaboration  <fa-icon [icon]="usersGear" class="lg:text-[70px]  text-[#626ee3] "></fa-icon></div>
+        <div class="slide">programation skills  <fa-icon [icon]="magic" class="lg:text-[70px] text-[#626ee3]"></fa-icon></div>
+        <div class="slide">E-learning <fa-icon [icon]="gc" class="lg:text-[70px] text-[#626ee3]"></fa-icon></div>
+        <div class="slide">Advice for programing <fa-icon [icon]="comment" class="lg:text-[70px] text-[#626ee3]"></fa-icon></div>
+        <div class="slide">Mock interview Question <fa-icon [icon]="question" class="lg:text-[70px] text-[#626ee3]"></fa-icon></div>
+        <div class="slide">get solution for problems  <fa-icon [icon]="gear" class=" lg:text-[70px] text-[#626ee3]  "></fa-icon></div>
+        <div class="slide">Managing your students , Learners <fa-icon [icon]="bar" class="lg:text-[70px] text-[#626ee3]"></fa-icon></div>
       
     </div>
 </div>

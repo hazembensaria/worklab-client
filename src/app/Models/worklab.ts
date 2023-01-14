@@ -3,7 +3,8 @@ export interface Worklab {
     auther:string,
     name:string,
     participants:[{name:string,id:string}],
-    problemId:string
+    problemId:string,
+    createdAt : Date
     
 
 }

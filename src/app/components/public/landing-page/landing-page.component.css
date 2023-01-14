@@ -58,21 +58,14 @@
 
   /* -------------------------------------------------------------------------------------- */
 
-  .slider {
-    background: white;
-    height: 250px;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-}
+
 
 .slider::before, .slider::after {
     background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%);
     content: "";
     height: 100%;
     position: absolute;
-    width: 100px;
+    width: 40px;
     z-index: 2;
 }
 
@@ -90,8 +83,8 @@
 
 .slider .slide-track {
     animation: scroll 20s linear infinite;
-    display: flex;
-    width: calc(250px * 36);
+ 
+    width: calc(100px * 36);
 
 }
 
@@ -107,7 +100,7 @@
   text-align: center;
   flex-direction: column;
   /* background: rgb(225, 225, 225); */
-    height: 300px;
+    height: 100;
     width: 300px;
 }
 

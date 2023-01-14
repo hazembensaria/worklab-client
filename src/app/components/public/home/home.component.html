@@ -13,25 +13,27 @@
   </div>
 </div>
 
-<div class="father flex  justify-between pr-2 bg-gray-900 ">
-  <div class=" w-[60%] ">
+<div class="father flex sm:flex-col lg:flex-row  justify-between pr-2 bg-gray-900 ">
+  <div class=" lg:w-[60%] sm:w-full ">
     <!-- <router-outlet name='child1'></router-outlet> -->
     <app-ide></app-ide>
   </div>
-  <div class="min-h-[90vh] w-[39%] bg-gray-600 rounded-md ">
+  <div class="min-h-[90vh] lg:w-[39%] sm:w-full bg-gray-600 rounded-md ">
     <div class="titles w-full flex gap-4 px-2 pt-2 bg-gray-900   items-end ">
-      <div (click)="routing('')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">chat</div>
-      <div (click)="routing('members')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   "
-        [matBadge]="worklab?.participants.length" matBadgeColor="warn">memebres</div>
-      <div (click)="routing('problem')" class=" bg-gray-300 py-1 px-2 rounded-t-md hover:cursor-pointer   ">problem
-      </div>
-    </div>
-    <div class="flex gap-4 p-2 text-white ">
-      <p> auther : {{currentUser?.name}}</p>
-      <p> name : {{worklab?.name}}</p>
-      <p> id : {{worklab?._id}}</p>
 
+      <div (click)="routing('')" class=" bg-[#f5f4f3] py-1 px-2 rounded-t-md hover:cursor-pointer   " >chat</div>
+      <div (click)="routing('members')"  class=" bg-[#f5f4f3] py-1 px-2 rounded-t-md hover:cursor-pointer   "  [matBadge]="worklab?.participants.length" matBadgeSize="small" matBadgeColor="warn">memebres</div>
+      <div (click)="routing('problem')" class=" bg-[#f5f4f3] py-1 px-2 rounded-t-md hover:cursor-pointer   ">problem</div>
     </div>
-    <router-outlet></router-outlet>
+    <div class="flex flex-col border-b border-t border-solid border-gray-300 bg-[#f5f4f3] p-2 text-[#01192f] ">
+        <p class="  font-thin ">⚒️ name : {{worklab?.name}}</p>
+        <p class="  font-thin ">🔑 Worklab key : {{worklab?._id}}</p>
+        <p class=" text-right text-xs "> {{worklab?.createdAt | date }} 🕓</p>
+      
+    </div>
+    <router-outlet  ></router-outlet>
   </div>
-</div>
+</div>     
+      
+      
+   

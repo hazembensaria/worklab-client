@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { initial } from 'cypress/types/lodash';
 import { UserService } from 'src/app/Services/user.service';
 import { WorklabService } from 'src/app/Services/workLab.service';
@@ -16,13 +16,10 @@ workLab : any ;
 enabledPerson! :string ;
 
 user ! : any ;
-  constructor(private workLabService :WorklabService , private route : ActivatedRoute , private userService : UserService) { }
+  constructor(private workLabService :WorklabService , private route : ActivatedRoute , private userService : UserService , private router : Router) { }
 
   ngOnInit(): void {
-    // enableOk
-  
-    console.log("memebres");
-    // console.log(this.route.pathFromRoot);
+   
 this.workLabService.acceptEvent.subscribe(next=>{
   this.initialse();
 })
@@ -57,6 +54,11 @@ enable(id: string){
       
 }
 removeParticipant(id : string){
+  this.workLabService.socket.emit("remove" , {worklabId : this.workLabId,id , message : "removed"})
   this.workLabService.removeParticipant.next(id);
+}
+
+enableAll(){
+  this.workLabService.socket.emit("denable",{auther : this.members})
 }
 }
