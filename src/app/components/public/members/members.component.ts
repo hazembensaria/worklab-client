@@ -56,4 +56,7 @@ enable(id: string){
       this.workLabService.socket.emit("enable",{auther : me})
       
 }
+removeParticipant(id : string){
+  this.workLabService.removeParticipant.next(id);
+}
 }
