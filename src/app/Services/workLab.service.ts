@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Worklab } from '../Models/worklab';
 @Injectable({
   providedIn: 'root'
 })
@@ -46,11 +47,25 @@ removeParticipant = new Subject<string>()
     return this.http.post('http://localhost:4000/worklab/saveCode' , obj)
   }
 
+
   deleteParticipantFromWorklab(idParticipant: string , worklabId :string){
     const obj ={
       idParticipant,
      worklabId
     }
     return this.http.post('http://localhost:4000/worklab/deleteParticipant' , obj)
-  }
+
+
+
+
+}
+getWorklabs(){
+  return this.http.get<{success:string,labs:Worklab[]}|{faild:string}>('http://localhost:4000/worklab/getWorklabs')
+}
+
+deleteLab(id:string){
+    
+  return this.http.delete<{success:string,lab:Worklab}|{faild:string}>(`http://localhost:4000/worklab/deleteLab/${id}`)
+
+}
 }

@@ -2,14 +2,15 @@
 
     <h1>Edit Your Profile!</h1>
 
-    <div class="editProfile  w-[60vw] h-[70vh] rounded-lg shadow-xl bg-red-50 flex flex-col  justify-center items-center">
+    <div
+        class="editProfile  w-[60vw] h-[70vh] rounded-lg shadow-xl bg-red-50 flex flex-col  justify-center items-center">
 
         <div class="form flex gap-5 flex-col p-2">
 
             <div class="name">
 
                 <h1>Name:</h1>
-                <input type="text"  [(ngModel)]="name" class="rounded-md">
+                <input type="text" [(ngModel)]="name" class="rounded-md">
             </div>
             <div class="email">
 
@@ -32,22 +33,27 @@
 <div class="container bg-blue-400  h-[90vh]  flex justify-center flex-col gap-3 items-center">
     <h1>Your workLabs</h1>
 
-    
+
     <div class="editWorkLabs  w-[60vw] h-[70vh] rounded-lg shadow-xl bg-red-50 flex  ">
 
-
-        <div class="title">
-
-            
-        </div>
-        
-
         <div class="worklabs">
-            <div class="worklab ">
-                <p>Worklab name</p>
-                <div class="openDelete">
-                    <fa-icon [icon]="trash"  class="text-[#fff]  text-[15px] "></fa-icon>
-                    <fa-icon [icon]="enter"  class="text-[#fff]  text-[15px] "></fa-icon>
+            <div class="worklab  " *ngFor="let lab of LabsInfo">
+
+                <div class="worklabs flex justify-between w-full  ">
+                    <div class="worklabName">
+                        <h1>{{lab.name}}</h1>
+                    </div>
+                    <div class="openDelete flex gap-3 ">
+                        <div class="delete cursor-pointer mr-5 ml-4" (click)="deleteLab(lab._id)">
+
+                            <fa-icon [icon]="trash" class="text-[#fff] text-blue-400 text-[15px]  "></fa-icon>
+                        </div>
+                        <div class="join cursor-pointer" (click)="visitLab(lab._id)">
+
+                            <fa-icon [icon]="enter"  class="text-[#fff] text-blue-400 text-[15px] "></fa-icon>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
