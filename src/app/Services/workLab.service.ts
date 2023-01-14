@@ -10,10 +10,11 @@ export class WorklabService {
 openDialog  = new Subject<boolean>()
 socket :any ; 
 acceptEvent  = new Subject<boolean>()
+removeParticipant = new Subject<string>() 
   constructor(private http:HttpClient ,  private router :Router) { }
 
-  createWorklab(name : string){
-    const worklab={name}
+  createWorklab(name : string  , problemId? : string){
+    const worklab={name , problemId}
     return this.http.post('http://localhost:4000/worklab/create',worklab);
   }
 
@@ -24,7 +25,7 @@ acceptEvent  = new Subject<boolean>()
 
   getWorklab(worklab : {id : string}){
 
-    return this.http.post<{sharedCode : boolean , _id : string ,  chat : [] , auther :string , participants :[]}>('http://localhost:4000/worklab/getWorklab' , worklab)
+    return this.http.post<{sharedCode : boolean , _id : string ,  chat : [] , auther :string , participants :[] , problemId : string}>('http://localhost:4000/worklab/getWorklab' , worklab)
 
   }
   addParticipant(participant : {name :string , id : string , worklabId :string}){
@@ -46,12 +47,25 @@ acceptEvent  = new Subject<boolean>()
     return this.http.post('http://localhost:4000/worklab/saveCode' , obj)
   }
 
-  getWorklabs(){
-    return this.http.get<{success:string,labs:Worklab[]}|{faild:string}>('http://localhost:4000/worklab/getWorklabs')
-  }
 
-  deleteLab(id:string){
+  deleteParticipantFromWorklab(idParticipant: string , worklabId :string){
+    const obj ={
+      idParticipant,
+     worklabId
+    }
+    return this.http.post('http://localhost:4000/worklab/deleteParticipant' , obj)
+
+
+
+
+}
+getWorklabs(){
+  return this.http.get<{success:string,labs:Worklab[]}|{faild:string}>('http://localhost:4000/worklab/getWorklabs')
+}
+
+deleteLab(id:string){
     
-    return this.http.delete<{success:string,lab:Worklab}|{faild:string}>(`http://localhost:4000/worklab/deleteLab/${id}`)
-  }
+  return this.http.delete<{success:string,lab:Worklab}|{faild:string}>(`http://localhost:4000/worklab/deleteLab/${id}`)
+
+}
 }

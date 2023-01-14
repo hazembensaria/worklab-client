@@ -108,10 +108,13 @@ export class ProblemsComponent implements OnInit {
   }
 
   createRoom(workLabName:string,id:string){
-    console.log(workLabName);
+    // console.log(workLabName);
+    console.log(this.ProblemId);
     
-    this.worklabService.createWorklab(workLabName).subscribe(res=>{
-      this.router.navigate([`worklab/${res}`],{ queryParams: { id: id }});
+    this.worklabService.createWorklab(workLabName , this.ProblemId).subscribe(res=>{
+      console.log(res);
+      
+      this.router.navigate([`worklab/${res}/problem`],{ queryParams: { message: res }});
       
     })
   }

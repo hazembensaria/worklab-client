@@ -1,8 +1,13 @@
 <div class="father bg-white h-[37.7rem] w-full ">
-    <div *ngIf="workLab?.auther==user?._id" class=" bg-red-200 ">..dqsdqsd.</div>
     <div class="members   flex flex-col gap-2 text-lg font-medium p-2">
         <div class="menmber relative px-2 gap-2 items-center justify-start flex " *ngFor="let member of members">
-            <div class="flex  w-full justify-between ">{{member.name}} <div *ngIf="workLab?.auther==user?._id"><p class=" bg-green-700 text-white px-2 rounded-lg" (click)="enable(member.id)">permission</p></div></div>
+            <div class="flex  w-full justify-between ">{{member.name}} 
+                <div class=" flex gap-2 " *ngIf="workLab?.auther==user?._id">
+                    <p class=" bg-green-700 text-white px-2 rounded-lg" (click)="enable(member.id)">permission</p>
+                    <p class=" bg-red-700 text-white px-2 rounded-lg" (click)="removeParticipant(member.id)">remove</p>
+
+                </div>
+            </div>
             <!-- <div *ngIf="workLab?.auther===member?.id" class=" bg-red-200 ">...</div> -->
         </div>
     </div>
