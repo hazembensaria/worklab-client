@@ -8,8 +8,8 @@ export class CompilerService {
 
   constructor(private http:HttpClient ,  private router :Router) { }
 
-  compileCode(code : string){
-    const program={code}
+  compileCode(code : string , language : string){
+    const program={code , language}
     return this.http.post('http://localhost:4000/compiler/code',program);
   }
 

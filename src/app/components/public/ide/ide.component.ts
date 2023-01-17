@@ -22,6 +22,9 @@ export class IdeComponent implements OnInit {
   workLabId ! :string ;
   enableEditing = true
   workLab :any ; 
+  selectedOption: any = "javascript";
+  languageBack : string = "nodejs"
+  options = [{value1: 'javascript',value2: 'nodejs', label: 'javascript'}, {value: 'java' ,value2: 'java', label: 'java'},{value: 'python', value2: "python3" , label: 'python  '}];
   @ViewChild("editor") private editor!: ElementRef<HTMLElement>;
   
   ngOnInit(): void {
@@ -52,7 +55,7 @@ export class IdeComponent implements OnInit {
       this.worklabService.socket?.on('getExecuter', (obj :any)=>{
         const aceEditor = ace.edit(this.editor.nativeElement);  
         console.log(aceEditor.getValue());
-        this.compilerService.compileCode(aceEditor.getValue()).subscribe(res=>{
+        this.compilerService.compileCode(aceEditor.getValue() , this.selectedOption).subscribe(res=>{
           console.log(res);
           this.compiledCode = res
           
@@ -101,7 +104,7 @@ export class IdeComponent implements OnInit {
     // aceEditor.session.setValue(this.workLab?.code);
     // if(!this.enableEditing){ aceEditor.setReadOnly(true);}
     aceEditor.setTheme("ace/theme/tomorrow_night");
-    aceEditor.session.setMode("ace/mode/javascript");
+    aceEditor.session.setMode(`ace/mode/${this.selectedOption}`);
     aceEditor.setOptions({
       enableBasicAutocompletion : true,
       enableLiveAutocompletion :true ,
@@ -118,7 +121,7 @@ export class IdeComponent implements OnInit {
     
     const aceEditor = ace.edit(this.editor.nativeElement);  
     
-    this.compilerService.compileCode(aceEditor.getValue()).subscribe(res=>{
+    this.compilerService.compileCode(aceEditor.getValue() , this.languageBack).subscribe(res=>{
      
       this.compiledCode = res
       
@@ -166,4 +169,19 @@ export class IdeComponent implements OnInit {
       
         
   } , 2000)
+
+
+  onOptionSelected(event: any) {
+    this.selectedOption = event.target.value;
+    console.log(this.selectedOption);
+    const aceEditor = ace.edit(this.editor.nativeElement);
+    aceEditor.session.setMode(`ace/mode/${this.selectedOption}`);
+    switch (this.selectedOption){
+      case 'javascript' : this.languageBack = 'nodejs' ; break ;
+      case 'java' : this.languageBack = 'java' ; break ;
+      case 'python' : this.languageBack = 'python3' ; break ;
+    }
+    console.log(this.languageBack);
+    
+  }
 }
