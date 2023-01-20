@@ -1,8 +1,9 @@
 <div class="father w-full rounded-md  ">
     <div class=" w-full flex flex-col gap-[.44rem]  ">
         <div class=" w-full  h-[6vh] flex items-center px-4 ">
-            <div class=" px-2 flec justify-center items-center h-[70%] bg-gray-300 rounded-md  ">javascript</div>
-             
+            <select  class=" px-2 flec justify-center items-center h-[70%] bg-gray-300 rounded-md  " [(ngModel)]="selectedOption" (change)="onOptionSelected($event)">
+                <option *ngFor="let option of options" [value]="option.value" [selected]="option.value === 'javascript'">{{option.label}}</option>
+              </select>
         </div>
         <div (input)="change()"  (keyup)="autoSaveCode($event)"  class="app-ace-editor rounded-md w-full h-[47vh] "  #editor >
             <!-- nothing -->
